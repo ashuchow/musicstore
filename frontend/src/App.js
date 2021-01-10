@@ -8,6 +8,10 @@ import ProductList from "./components/ProductList";
 import Details from "./components/Details";
 import Cart from "./components/Cart";
 import Default from "./components/Default";
+import SignUp from "./components/Signup";
+import Login from "./components/Login";
+import Contact from "./components/Contact";
+import Wishlist from "./components/Wishlist";
 
 
 function App() {
@@ -15,8 +19,13 @@ function App() {
   <Router>
     <Switch>
       <Route exact path="/" exact component={Home} />
+      <Route path="/products" component={ProductList} />
       <Route path="/details" component={Details} />
       <Route path="/cart" component={Cart} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/signup" component={SignUp} />
+      <Route path="/login" component={Login} />
+      <Route path="/wishlist" component={Wishlist} />
       <Route component={Default} />
     
 

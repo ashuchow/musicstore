@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
+import styled from 'styled-components';
 
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,16 +10,32 @@ function Home() {
   return (
   <div>
     <header className = "header">
-        <h1>Musik Mart</h1>
-    </header>
+	<Link to="/">
+		<h1>Musik Mart</h1>
+    </Link>
+	</header>
     <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Contact</a>
-    <a href="#">Cart</a>
-    <a href="#">Login/SignUp</a>
-    <a href="#">User Profile</a>
-    <a href="#">Wishlist</a>
+	<Link to="/">
+    <a>Home</a>
+	</Link>
+	<Link to="/products">
+    <a>Products</a>
+	</Link>
+	<Link to="/cart">
+    <a>Cart</a>
+	</Link>
+	<Link to="/login">
+    <a>Login</a>
+	</Link>
+	<Link to="/signup">
+    <a>Sign-up</a>
+	</Link>
+	<Link to="/wishlist">
+    <a>Wishlist</a>
+	</Link>
+	<Link to="/contact">
+    <a>Contact</a>
+	</Link>
     </nav>
     
     
@@ -27,9 +44,11 @@ function Home() {
             <h2>Your Stop For Anything Music</h2>
         </div>
         <div className= "ButtonContainer1">
-            <Button variant="danger" size="lg">
+		<Link to ="/products">	
+            <Button>
             View Products
             </Button>
+		</Link>	
         </div>
     
     
@@ -89,5 +108,7 @@ function Home() {
 	</div>
   );
 }
+
+
 
 export default Home;
