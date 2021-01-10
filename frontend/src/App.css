@@ -1,5 +1,17 @@
+:root{
+  --mainblue: #2a2a2a;
+  --lightblue: #009ffd;
+  --mainwhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainyellow: #ffa400;
+
+
+
+
+}
+
 body{
-  font-family: 'East Sea Dokdo', cursive !important;
+  background: var(--mainwhite) !important;
   font-size: x-large !important;
 }
 .header {
@@ -32,6 +44,7 @@ nav a {
   text-align: center;
   font-size: 100px;
   color: red;
+  font-family: 'East Sea Dokdo', cursive !important;
 
 }
 
@@ -48,6 +61,7 @@ nav a {
   margin-left:25%;
   margin-right:25%;
   font-family: 'Courier New', Courier, monospace !important;
+  
 }
 
 /* forms */      /* Reference: https://webdevtrick.com/html-css-footer/*/
