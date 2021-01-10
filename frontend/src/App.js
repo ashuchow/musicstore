@@ -1,22 +1,21 @@
 import React, {Component} from "react";
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Screens/Home";
 
 function App() {
   return (
-  <div>
-    <header className = "header">
-        <h1>Musik Mart</h1>
-    </header>
-    <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Contact</a>
-    <a href="#">Cart</a>
-    <a href="#">Login/SignUp</a>
-    </nav>
-  </div>
+  <Router>
+    <Switch>
+      <Route path="/" exact component={Home} />
+    
+
+    </Switch>
+  
+ 
+	
+  </Router>
   );
 }
 
