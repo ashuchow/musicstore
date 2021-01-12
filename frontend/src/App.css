@@ -64,6 +64,26 @@ nav a {
   
 }
 
+
+
+.header1 {
+	padding: 60px;
+	text-align: center;
+	background: red;
+	color: white;
+	font-size: 30px;
+  }
+  
+
+
+  
+.input-group.md-form.form-sm.form-1 input {
+	border: 1px solid #bdbdbd;
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+	
+  }
+
 /* forms */      /* Reference: https://webdevtrick.com/html-css-footer/*/
 footer{
 	position: relative;

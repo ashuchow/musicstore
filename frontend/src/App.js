@@ -12,10 +12,12 @@ import SignUp from "./components/Signup";
 import Login from "./components/Login";
 import Contact from "./components/Contact";
 import Wishlist from "./components/Wishlist";
+import {ProductProvider} from "./context";
 
 
 function App() {
   return (
+
   <Router>
     <Switch>
       <Route exact path="/" exact component={Home} />
@@ -34,6 +36,7 @@ function App() {
  
 	
   </Router>
+  
   );
 }
 
