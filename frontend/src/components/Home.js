@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 import styled from 'styled-components';
 
 
@@ -9,32 +9,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Home() {
   return (
   <div>
-    <header className = "header">
-	<Link to="/">
-		<h1>Musik Mart</h1>
-    </Link>
-	</header>
-    <nav>
-	<Link to="/">
-    <a>     Home     </a>
-	</Link>
-	<Link to="/products">
-    <a>Products</a>
-	</Link>
 
-	<Link to="/login">
-    <a>Login</a>
-	</Link>
-	<Link to="/signup">
-    <a>Sign-up</a>
-	</Link>
-
-	<Link to="/contact">
-    <a>Contact</a>
-	</Link>
-    </nav>
     
-    
+    <Card>
+		<Card.Img src="https://i.guim.co.uk/img/media/ad98f2dc808f18131e35e59c05ba6212671e8227/94_0_3061_1838/master/3061.jpg?width=1200&quality=85&auto=format&fit=max&s=fe0f9ee06af06c3c9f4b88c6dfd87b7b"/>
+		<Card.ImgOverlay>
 		<div className="mainbody"> 
             <h1>MUSIK Mart</h1>
             <h2>Your Stop For Anything Music</h2>
@@ -46,60 +25,15 @@ function Home() {
             </Button>
 		</Link>	
         </div>
-    
-    
-    
-    
-    
-   
-		<footer className="footer-distributed">
- 
-		<div className="footer-left">
- 
-		<h3>Musik Mart</h3>
- 
-		<p className="footer-links">
-		<a href="#">Home</a>
-
-	·
-		<a href="#">Contact</a>
-    
-		</p>
- 
-		<p className="footer-company-name">MusikMart &copy; 2021</p>
-		</div>
- 
-		<div className="footer-center">
- 
-		<div>
-		<i className="fa fa-map-marker"></i>
-		<p><span>21 Connought Place</span> Delhi, India</p>
-		</div>
- 
-		<div>
-		<i className="fa fa-phone"></i>
-		<p>+9872652669</p>
-		</div>
- 
-		<div>
-		<i className="fa fa-envelope"></i>
-		<p><a href="mailto:adityavsarkar@gmail.com">contact@MusikMart.com</a></p>
-		</div>
- 
-		</div>
- 
-		<div className="footer-right">
- 
-		<p className="footer-company-about">
-		<span>About the company</span>
-    Musik Mart is an E-commerce shopping platform focused on music products and instruments. Made For Advanced Programming Course.
-		</p>
- 
+		</Card.ImgOverlay>
 		
- 
-		</div>
- 
-		</footer>
+		</Card>
+	
+    
+    
+    
+    
+  
  
 	</div>
   );

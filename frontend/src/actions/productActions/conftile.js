@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, CardDeck, CardGroup, CardImg, Breadcrumb, Table } from "react-bootstrap";
 
-class ProductTile extends Component {
+class ConfTile extends Component {
   render() {
     return (
       <div>
@@ -24,23 +24,23 @@ class ProductTile extends Component {
       <Card.Text>
         {this.props.price}
       </Card.Text>
+      <Card.Title>Status:</Card.Title>
+      <Card.Text>
+        PURCHASED!
+      </Card.Text>
+      <Card.Title>Name:</Card.Title>
+      <Card.Text>
+        {this.props.cname}
+      </Card.Text>
+      <Card.Title>Deliver to:</Card.Title>
+      <Card.Text>
+        {this.props.address}
+      </Card.Text>
+
     </Card.Body>
+
     <Card.Footer>
-    <Link to="/payment">
-                    <Button variant="danger">
-                        Buy now 
-                    </Button>
-    </Link>
-    <Link to="/wishlist">
-                    <Button variant="danger">
-                        Add to Wishlist
-                    </Button>
-    </Link>
-    <Link to="/cart">
-                    <Button variant="danger">
-                        Add to Cart
-                    </Button>
-    </Link>
+
     </Card.Footer>
   </Card>
  
@@ -54,4 +54,4 @@ class ProductTile extends Component {
   }
 }
 
-export default ProductTile;
+export default ConfTile;

@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 function userSignIn() {
     return (
         <div>
+                <header className = "header">
+	<Link to="/">
+		<h1>Musik Mart</h1>
+    </Link>
+	</header>
             <div className="header">
           <h1>Sign-in</h1>
         </div>
@@ -31,9 +36,7 @@ function userSignIn() {
                 <li>
                     <button type ="submit" className= "button primary">Sign In</button>
                 </li>
-                <li>
-                    Make New Account
-                </li>
+               
                 <li>
                     <Link to = "/signup" className ="button secondary text-center">Create a new Account</Link>
                 </li>

@@ -16,11 +16,12 @@ body{
 }
 .header {
   padding: 40px;
-  background-color: red;
+  background-color: rgb(139, 0, 0);
   font-family: 'East Sea Dokdo', cursive !important;
   font-size:x-large;
   
 }
+
 header h1 {
   text-align: center;
   font-size: 100px;
@@ -43,15 +44,15 @@ nav a {
 .mainbody h1{
   text-align: center;
   font-size: 100px;
-  color: red;
+  color: rgb(20, 8, 8);
   font-family: 'East Sea Dokdo', cursive !important;
 
 }
 
 .mainbody h2{
   text-align: center;
-  font-size: 40px;
-  color:gray;
+  font-size: 60px;
+  color:rgb(26, 7, 7);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
@@ -67,7 +68,7 @@ nav a {
 
 
 .header1 {
-	padding: 60px;
+	padding: 100px;
 	text-align: center;
 	background: red;
 	color: white;
@@ -139,7 +140,7 @@ footer{
  
 .footer-distributed .footer-company-name{
 	color:  #8f9296;
-	font-size: 14px;
+	font-size: 40px;
 	font-weight: normal;
 	margin: 0;
 }

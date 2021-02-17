@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 function userSignUp() {
     return (
         <div>
+                   <header className = "header">
+	<Link to="/">
+		<h1>Musik Mart</h1>
+    </Link>
+	</header>
         <div>
             <div className="header">
           <h1>Sign-up</h1>
@@ -27,6 +32,14 @@ function userSignUp() {
                         Email
                     </label>
                     <input type = "email" name ="email" id = "email" onChange={(e) => (e.target.value)}>
+                    </input>
+                    
+                </li>
+                <li>
+                    <label htmlFor= "address">
+                        Address
+                    </label>
+                    <input type = "address" name ="address" id = "address" onChange={(e) => (e.target.value)}>
                     </input>
                     
                 </li>

@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, CardDeck, CardGroup, CardImg, Breadcrumb, Table } from "react-bootstrap";
 
-class ProductTile extends Component {
+class CartTile extends Component {
   render() {
     return (
       <div>
   <CardGroup>
-  <Card border="dark" style={{ width: '18px' }}>
+  <Card  bg="dark" text="light">
   <div className="d-flex flex-column align-items-center text-center">
       <img className="float right" src={this.props.image}alt="" className="img-fluid rounded shadow-sm"></img>
      </div>
+    <div class="col-sm-6">
     <Card.Body>
+
     <Card.Title>{this.props.name}</Card.Title>
       <Card.Text>
         {this.props.category}
@@ -28,20 +30,16 @@ class ProductTile extends Component {
     <Card.Footer>
     <Link to="/payment">
                     <Button variant="danger">
-                        Buy now 
+                        Buy Now
                     </Button>
     </Link>
     <Link to="/wishlist">
-                    <Button variant="danger">
-                        Add to Wishlist
+    <Button variant="danger">
+                        Add to wishlist
                     </Button>
-    </Link>
-    <Link to="/cart">
-                    <Button variant="danger">
-                        Add to Cart
-                    </Button>
-    </Link>
+                    </Link>
     </Card.Footer>
+    </div>
   </Card>
  
 </CardGroup>
@@ -54,4 +52,4 @@ class ProductTile extends Component {
   }
 }
 
-export default ProductTile;
+export default CartTile;
