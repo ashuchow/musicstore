@@ -16,7 +16,7 @@ function payment() {
       <div className="row mb-4">
         <div className="col-lg-8 mx-auto text-center">
           <h1 className="display-4">Payment Page</h1>
-          <h2 className="display-6">Total Price: Rs. 1100</h2>
+          <h2 className="display-6">Total Price: Rs. 2000</h2>
         </div>
       </div>
       <div className="row">
