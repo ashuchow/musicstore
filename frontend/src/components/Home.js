@@ -16,23 +16,19 @@ function Home() {
 	</header>
     <nav>
 	<Link to="/">
-    <a>Home</a>
+    <a>     Home     </a>
 	</Link>
 	<Link to="/products">
     <a>Products</a>
 	</Link>
-	<Link to="/cart">
-    <a>Cart</a>
-	</Link>
+
 	<Link to="/login">
     <a>Login</a>
 	</Link>
 	<Link to="/signup">
     <a>Sign-up</a>
 	</Link>
-	<Link to="/wishlist">
-    <a>Wishlist</a>
-	</Link>
+
 	<Link to="/contact">
     <a>Contact</a>
 	</Link>

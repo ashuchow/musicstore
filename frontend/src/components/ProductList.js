@@ -1,39 +1,83 @@
 import React, { Component } from "react";
-import {storeProducts} from '../data';
-import {Link} from 'react-router-dom';
-import Navbar from "./Navbar";
-import Product from './Product';
-import { MDBCol, MDBIcon } from "mdbreact";
+import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import HotelTile from "../actions/producttile";
 
-
-
-class ProductList extends Component {
+class resultHotel extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Navbar/>
-        <div className="header1">
+      <div>
+          
+            <div className="header">
           <h1>Products</h1>
         </div>
-      <MDBCol md="6">
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
+        <div>
+        <HotelTile
+          
+          
+          name = "Indian Tabla"
+          category='Hindustani'
+          image='http://cdn.shopify.com/s/files/1/1800/7761/products/TAAL_Set_4_-_Copper_5KG_Tablas_-_01_grande.jpg?v=1572282931'
+          price= '2000'
+          brand= 'Farrukkabadi Beats'
+          
+        />
+        <HotelTile
+                name='Electric Guitar'
+                category='Guitars'
+                image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+                price= '2000'
+                brand= 'Gibson'
+
+        />
+        <HotelTile
+         
+        name='Electric Guitar'
+        category='Guitars'
+        image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+        price= '2000'
+        brand= 'Gibson'
+        />
+                <HotelTile
+         
+         name='Electric Guitar'
+         category='Guitars'
+         image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+         price= '2000'
+         brand= 'Gibson'
+         />
+                 <HotelTile
+         
+         name='Electric Guitar'
+         category='Guitars'
+         image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+         price= '2000'
+         brand= 'Gibson'
+         />
+                 <HotelTile
+         
+         name='Electric Guitar'
+         category='Guitars'
+         image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+         price= '2000'
+         brand= 'Gibson'
+         />
+                 <HotelTile
+         
+         name='Electric Guitar'
+         category='Guitars'
+         image='https://www.dressinn.com/f/13687/136872891/wrangler-logo-hoodie.jpg'
+         price= '2000'
+         brand= 'Gibson'
+         />
         </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" />
-      </div>
-    </MDBCol>
+
     
-
-
-
-
-      </React.Fragment>
-      
+            
+      </div>
     );
   }
 }
 
-export default ProductList;
+export default resultHotel;

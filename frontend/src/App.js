@@ -13,6 +13,7 @@ import Login from "./components/Login";
 import Contact from "./components/Contact";
 import Wishlist from "./components/Wishlist";
 import {ProductProvider} from "./context";
+import Product from "./components/Contact";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   <Router>
     <Switch>
       <Route exact path="/" exact component={Home} />
+      <Route path="/product" component={Product} />
       <Route path="/products" component={ProductList} />
       <Route path="/details" component={Details} />
       <Route path="/cart" component={Cart} />
