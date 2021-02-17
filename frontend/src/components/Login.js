@@ -34,7 +34,9 @@ function userSignIn() {
                     </input>
                 </li>
                 <li>
+                    <Link to ="/">
                     <button type ="submit" className= "button primary">Sign In</button>
+                    </Link>
                 </li>
                
                 <li>
