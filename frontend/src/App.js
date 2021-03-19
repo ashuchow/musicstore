@@ -22,6 +22,7 @@ import profile from "./components/profile"
 function App() {
   return (
 
+
   <Router>
     <Navbar/>
     <Switch>
@@ -90,10 +91,11 @@ function App() {
 		</div>
  
 		</footer>
+
  
 	
   </Router>
-  
+
   );
 }
 
