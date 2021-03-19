@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require ('cors');
-const mongoose= require ('mongoose');
+const mongoose = require ('mongoose');
 require('dotenv').config();
 
 const app = express();
@@ -23,20 +23,8 @@ mongoose.connect(
     }
   );
 
-  const Product = require("./products");
-
-  app.post("/addproduct", (req, res) => {
-  
-    const newProduct = new Product({
-      name: req.body.name,
-      description: req.body.description,
-    });
-    newProduct.save()
-    .then(() => res.json('Product added!!'))
-    .catch(err => res.status(400).json('Error: ' + err));
-  
-});
-
+const productsRouter = require("./Routes/products");
+app.use('/products', productsRouter);
 
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}`)
