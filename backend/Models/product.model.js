@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const product = new mongoose.Schema({
 
   name: String,
@@ -13,5 +14,7 @@ const product = new mongoose.Schema({
   buyers: [{ type: String }],
   wishers: [{ type: String }],
 });
+
+
 
 module.exports = mongoose.model("Product", product);
