@@ -62,13 +62,12 @@ class Product extends Component {
     render() {
 
       const addToCart = (cartProduct) => {
-        console.log("entered add to cart")
         Axios({
           method: "POST",
           data: {
             productId: cartProduct,
           },
-          withCredentials: false,
+          withCredentials: true,
           url: "http://localhost:5000/users/addtocart",
         }).then(function (res) {
           console.log(res);
@@ -82,7 +81,7 @@ class Product extends Component {
           data: {
             productId: cartProduct,
           },
-          withCredentials: false,
+          withCredentials: true,
           url: "http://localhost:5000/users/addtowishlist",
         }).then(function (res) {
           console.log(res);
