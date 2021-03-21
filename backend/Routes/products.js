@@ -35,7 +35,6 @@ router.route('/search/:term').get((req, res) => {
       if (err) throw err;
       if (doc){
         await res.send(doc);
-        //console.log(doc);
       }
     });
   }
@@ -44,7 +43,7 @@ router.route('/search/:term').get((req, res) => {
       if (err) throw err;
       if (doc){
         await res.send(doc);
-        //console.log(doc);
+
       }
     });
   }
@@ -61,25 +60,23 @@ router.route("/getfeaturedproducts").get((req, res) => {
   });
 });
 
-router.route("/searchbygender/:gender").get((req, res) => {
-  const gender = req.params.gender;
+router.route("/searchbydexterity/:dexterity").get((req, res) => {
+  const dexterity = req.params.dexterity;
 
-  if (gender==="A"){
+  if (dexterity==="A"){
     Product.find({}, async (err, doc) =>{
       if (err) throw err;
       if (doc){
         await res.send(doc);
-        //console.log(doc);
       }
     });
 
   }
   else{
-    Product.find({gender: gender}, async (err, doc) =>{
+    Product.find({dexterity: dexterity}, async (err, doc) =>{
       if (err) throw err;
       if (doc){
         await res.send(doc);
-        //console.log(doc);
       }
     });
   }
@@ -95,7 +92,6 @@ router.route("/searchbycolor/:color").get((req, res) => {
       if (err) throw err;
       if (doc){
         await res.send(doc);
-        //console.log(doc);
       }
     });
 

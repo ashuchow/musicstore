@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let User = require("../Models/user.model");
-const mongoose = require("mongoose");
+let Product = require("../Models/product.model");
 
 router.route("/add").post((req, res) => {
   const newUser = new User({
