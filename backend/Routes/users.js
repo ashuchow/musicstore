@@ -42,13 +42,6 @@ router.route("/update/address").post((req, res) => {
 });
 
 router.route("/addtocart").post((req, res) => {
-  //transporter.sendMail(mailOptions, function(error, info){
-  //  if (error) {
-  //    console.log(error);
-  //  } else {
-  //    console.log('Email sent: ' + info.response);
-  //  }
-  //});
 
   if (!req.user) {
     res.send("Please login first!");

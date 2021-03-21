@@ -71,7 +71,7 @@ app.get(
   passport.authenticate("google", { failureRedirect: "https://meet.google.com/wjo-qeyf-xmi" }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect("https://www.google.co.in/");
+    res.redirect("http://localhost:3000/");
   }
 );
 
@@ -109,7 +109,7 @@ app.post("/register", (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("Welcome to FSHN!");
+      res.send("Welcome to Musik Kart!");
 
       // const welcomeEmail = {
       //   from: 'fshn.customer.service@gmail.com',
