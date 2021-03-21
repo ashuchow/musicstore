@@ -13,7 +13,7 @@ import Login from "./components/Login";
 import Contact from "./components/Contact";
 import Wishlist from "./components/Wishlist";
 import {ProductProvider} from "./context";
-import Product from "./components/Contact";
+import Product from "./components/Product";
 import Confirm from "./components/Confirm";
 import profile from "./components/profile"
 
@@ -35,7 +35,7 @@ function App() {
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
       <Route path="/wishlist" component={Wishlist} />
-      <Route path="/PR" component={Product}/>
+      <Route path="/product/" component={Product}/>
       <Route path="/payment" component={Details} />
       <Route path="/p" component={Confirm} />
       <Route path ="/prof" component={profile}/>
