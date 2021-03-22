@@ -36,12 +36,12 @@ app.use(
 );
 app.use(
   expressSession({
-    secret: "mondal",
+    secret: "sorkar",
     resave: true,
     saveUninitialized: true,
   })
 );
-app.use(cookieParser("mondal"));
+app.use(cookieParser("sorkar"));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);

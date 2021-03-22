@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import Axios from "axios"; // for making http requests
 import GoogleButton from "react-google-button";
-
+import './Login.css';
+import { Button, Card, CardDeck, CardGroup, CardImg, Breadcrumb, Table } from "react-bootstrap";
 
 // export default function Login() {
 //   const [registerUsername, setRegisterUsername] = useState("");
@@ -148,31 +149,47 @@ export default function UserSignIn() {
           <h1>Sign-in</h1>
         </div>
 
-          
-        <div className = "form">
-        <form onSubmit>
-            <ul className = "form-container">
-                <li>
+        <Card bg="dark" text="light align-items-center">
+        
+        {/* <div className = "form"> */}
+        <form action="action_page.php" method="post">
+  <div class="imgcontainer">
+    <img src="https://previews.123rf.com/images/surfupvector/surfupvector1904/surfupvector190400502/120462076-music-show-line-icon-rock-concert-electric-guitar-music-celebration-concept-vector-illustration-can-.jpg" alt="Avatar" class="avatar"/>
+  </div>
+            <center>
+
+            <ul className = "form-container" >
+                <li >
                     <h3>Sign In</h3>
-                </li>
+                </li> 
                 <li>
-                    <label htmlFor= "name">
-                        Name
+                <div class= "container">
+                    <label for = "name">
+                       <b>Username</b> 
                     </label>
-                    <input type = "name" name ="name" id = "name" onChange={(e) => setLoginUsername(e.target.value)}>
+                    <br></br>
+                    <input type = "text" placeholder ="  Username" id = "name" onChange={(e) => setLoginUsername(e.target.value)}>
                     </input>
-                    
+                </div>  
                 </li>
                 <li>
-                <label for= "password">Password</label>
-                <input type = "password" name ="password" id = "password" onChange={(e) => setLoginPassword(e.target.value)}>
+                <div class = "container">
+                <label for= "password"><b>Password</b>
+                </label>
+                <br></br>
+
+                <input type = "password" placeholder ="  Password" id = "password" onChange={(e) => setLoginPassword(e.target.value)}>
                     </input>
+                    </div>
                 </li>
                 <li>
+                <div class = "container">
                     <Link to ="/">
                     <button onClick={login}>Continue</button>
                     </Link>
+                  </div>
                 </li>
+               
                 <center>
           <GoogleButton onClick={googleAuth}/>
         </center>
@@ -183,13 +200,14 @@ export default function UserSignIn() {
                 </li>
 
             </ul>
+            </center>
 
 
-
+        
         </form>
-
+        </Card>  
     </div>
-    </div>
+    // </div>
     )
 }
 

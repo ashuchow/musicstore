@@ -15,7 +15,7 @@ body{
   font-size: x-large !important;
 }
 .header {
-  padding: 40px;
+  padding: 5px;
   background-color: rgb(139, 0, 0);
   font-family: 'East Sea Dokdo', cursive !important;
   font-size:x-large;
@@ -33,9 +33,9 @@ nav {
 }
 
 nav a {
-  text-decoration: none;
+  text-decoration:lightcoral;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI';
   text-align: center;
   float: left;
   color: white;
