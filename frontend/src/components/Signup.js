@@ -1,7 +1,36 @@
-import React from 'react'
+
+import React, { useState } from "react";
+import Axios from "axios"; // for making http requests
 import { Link } from 'react-router-dom';
 
-function userSignUp() {
+export default function UserSignUp() {
+
+
+
+
+    const [registerUsername, setRegisterUsername] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+  
+    const [registerEmail, setRegisterEmail] = useState("");
+
+  
+  
+    const register = () => {
+      Axios({
+        method: "POST",
+        data: {
+          username: registerUsername,
+          password: registerPassword,
+        //   mobile: registerMobile,
+          email: registerEmail,
+        },
+        withCredentials: true,
+        url: "http://localhost:5000/register",
+      }).then(function (res) {
+        console.log(res);
+        alert(res.data);
+      });
+    };
     return (
         <div>
                    <header className = "header">
@@ -23,7 +52,7 @@ function userSignUp() {
                     <label htmlFor= "name">
                         Name
                     </label>
-                    <input type = "name" name ="name" id = "name" onChange={(e) =>(e.target.value)}>
+                    <input type = "name" name ="name" id = "name"onChange={(e) => setRegisterUsername(e.target.value)}>
                     </input>
                     
                 </li>
@@ -31,7 +60,7 @@ function userSignUp() {
                     <label htmlFor= "email">
                         Email
                     </label>
-                    <input type = "email" name ="email" id = "email" onChange={(e) => (e.target.value)}>
+                    <input type = "email" name ="email" id = "email"  onChange={(e) => setRegisterEmail(e.target.value)}>
                     </input>
                     
                 </li>
@@ -45,16 +74,16 @@ function userSignUp() {
                 </li>
                 <li>
                 <label for= "password">Password</label>
-                <input type = "password" name ="password" id = "password" onChange={(e) => (e.target.value)}>
+                <input type = "password" name ="password" id = "password" onChange={(e) => setRegisterPassword(e.target.value)}>
                     </input>
                 </li>
                 <li>
                 <label for= "rePassword">RePassword</label>
-                <input type = "rePassword" name ="rePassword" id = "rePassword" onChange={(e) => (e.target.value)}>
+                <input type = "rePassword" name ="rePassword" id = "rePassword" onChange={(e) => setRegisterPassword(e.target.value)}>
                     </input>
                 </li>
                 <li>
-                    <Link to ="/"><button type ="submit" className= "button primary">Sign In</button></Link>
+                <button onClick={register}>Submit</button>
                 </li>
                 <li>
                     Already have an account? <Link to = "/login">Sign-IN</Link>
@@ -73,4 +102,3 @@ function userSignUp() {
     )
 }
 
-export default userSignUp
