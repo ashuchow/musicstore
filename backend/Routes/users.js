@@ -2,21 +2,6 @@ const router = require('express').Router();
 let User = require("../Models/user.model");
 let Product = require("../Models/product.model");
 
-router.route("/add").post((req, res) => {
-  const newUser = new User({
-    name: req.body.name,
-    description: req.body.description,
-    category: req.body.category,
-    imageurl: req.body.imageurl,
-    price: req.body.price,
-    rating: req.body.rating,
-    color: req.body.color,
-  });
-  newUser
-    .save()
-    .then(() => res.json("User added!!"))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
 
 router.route("/update/number").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
@@ -29,6 +14,8 @@ router.route("/update/number").post((req, res) => {
     }
   });
 });
+
+
 router.route("/update/address").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
@@ -42,11 +29,12 @@ router.route("/update/address").post((req, res) => {
 });
 
 router.route("/addtocart").post((req, res) => {
-  console.log("entered add to cart")
+  //console.log("entered add to cart")
   if (!req.user) {
     res.send("Please login first!");
-  } else {
-    console.log(req.user._id)
+  } 
+  else {
+    //console.log(req.user._id)
     Product.findOne({ _id: req.body.productId }, async (err, doc) => {
       if (err) throw err;
       if (doc) {
@@ -158,6 +146,7 @@ router.route("/addtowishlist").post((req, res) => {
     });
   }
 });
+
 
 router.route("/movetowishlist").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {

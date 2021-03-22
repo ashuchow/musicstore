@@ -8,15 +8,13 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const expressSession = require("express-session");
 const bodyParser = require("body-parser");
-//const nodemailer = require('nodemailer');
-
 
 const app = express();
 const PORT = 5000;
 
 const User = require("./Models/user.model");
-//const Product = require("./product");
-//const user = require("./user");
+//const Product = require("./Models/product.model");
+//const user = require("./Models/user.model");
 
 //========================================= MONGODB CONNECT
 
@@ -27,17 +25,16 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   () => {
-    console.log("Users Database (MongoDB) is now connected");
+    console.log("Musik Mart database connected!");
   }
 );
 
-//========================================= MIDDLEWARE
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:3000", // location of react frontend
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -54,42 +51,23 @@ app.use(passport.session());
 require("./passportConfig")(passport);
 
 
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'fshn.customer.service@gmail.com',
-//     pass: 'thisisFSHN123!@#'
-//   }
-// });
-
-// const mailOptions = {
-//   from: 'fshn.customer.service@gmail.com',
-//   to: 'soham.de_ug22@ashoka.edu.in',
-//   subject: 'Sending Email using Node.js',
-//   text: 'You added something to cart. That was easy!'
-// };
-
-
-//========================================= ROUTES
-
 app.get('/google',
   passport.authenticate('google', { scope: ['profile','email'] }));
 
 app.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('http://localhost:3000/profile');
   });
 
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("User does not exist!");
+    if (!user) res.send("User not found, please sign up!");
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully logged in!");
+        res.send("Login successful, enjoy Musik Mart!");
         //console.log(req.user);
       });
     }
@@ -104,7 +82,7 @@ app.get('/logout', function(req, res){
 app.post("/register", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send("User already exists, please login");
+    if (doc) res.send("You are already a cherished member, please use Log in");
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -115,12 +93,10 @@ app.post("/register", (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("Welcome to FSHN!");
+      res.send("Enjoy your Musik Mart!");
     }
   });
 });
-
-// =================== Add new product to DB ROUTE:
 
 
 const productsRouter = require("./Routes/products");
@@ -131,10 +107,9 @@ app.use("/users", usersRouter);
 
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Why are you here!");
 });
 
-//========================================= SERVER STARTING
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
