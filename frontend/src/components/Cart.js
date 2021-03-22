@@ -30,8 +30,6 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import CartTile from "../actions/carttile";
-import CartComp from "../actions/cart";
-import WishComp from "../actions/wishlist";
 import Axios from "axios";
 
 class Cart extends Component {

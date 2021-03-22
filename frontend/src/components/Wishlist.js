@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import CartTile from "../actions/carttile";
-import CartComp from "../actions/cart";
 import WishTile from "../actions/wishtile";
 import Axios from "axios";
 

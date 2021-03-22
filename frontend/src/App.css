@@ -1,13 +1,9 @@
-:root{
+:root {
   --mainblue: #2a2a2a;
   --lightblue: #009ffd;
   --mainwhite: #f3f3f3;
   --mainDark: #232528;
   --mainyellow: #ffa400;
-
-
-
-
 }
 
 body{
@@ -18,9 +14,8 @@ body{
 .header {
   padding: 5px;
   background-color: rgb(139, 0, 0);
-  font-family: 'East Sea Dokdo', cursive !important;
-  font-size:x-large;
-  
+  font-family: "East Sea Dokdo", cursive !important;
+  font-size: x-large;
 }
 
 header h1 {
@@ -34,36 +29,33 @@ nav {
 }
 
 nav a {
-  text-decoration:lightcoral;
+  text-decoration: lightcoral;
   padding: 20px;
-  font-family: 'Segoe UI';
+  font-family: "Segoe UI";
   text-align: center;
   float: left;
   color: white;
 }
-/* Home Page Button */ 
-.mainbody h1{
+/* Home Page Button */
+.mainbody h1 {
   text-align: center;
   font-size: 100px;
   color: rgb(20, 8, 8);
-  font-family: 'East Sea Dokdo', cursive !important;
-
+  font-family: "East Sea Dokdo", cursive !important;
 }
 
-.mainbody h2{
+.mainbody h2 {
   text-align: center;
   font-size: 60px;
-  color:rgb(26, 7, 7);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  color: rgb(26, 7, 7);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.buttonContainer1{
-  text-align: center;  
-  width:50%;
-  margin-left:25%;
-  margin-right:25%;
-  font-family: 'Courier New', Courier, monospace !important;
-  
+.buttonContainer1 {
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-family: "Courier New", Courier, monospace !important;
 }
 
 .review-tile{
@@ -77,56 +69,60 @@ nav a {
 
 }
 
+.user-info {
+  border: 2px;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  padding: 3%;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(145, 41, 41, 0.2);
+}
 
 .header1 {
-	padding: 100px;
-	text-align: center;
-	background: red;
-	color: white;
-	font-size: 30px;
-  }
-  
+  padding: 100px;
+  text-align: center;
+  background: red;
+  color: white;
+  font-size: 30px;
+}
 
-
-  
 .input-group.md-form.form-sm.form-1 input {
-	border: 1px solid #bdbdbd;
-	border-top-right-radius: 0.25rem;
-	border-bottom-right-radius: 0.25rem;
-	
-  }
+  border: 1px solid #bdbdbd;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
 
-/* forms */      /* Reference: https://webdevtrick.com/html-css-footer/*/
-footer{
-	position: relative;
-	bottom: 0;
+/* forms */ /* Reference: https://webdevtrick.com/html-css-footer/*/
+footer {
+  position: relative;
+  bottom: 0;
 }
-.footer-distributed{
-	background-color: #292c2f;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: bold 16px sans-serif;
- 
-	padding: 55px 50px;
-	margin-top: 80px;
+.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+
+  padding: 55px 50px;
+  margin-top: 80px;
 }
- 
+
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
-.footer-distributed .footer-right{
-	display: inline-block;
-	vertical-align: top;
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
 }
- 
-.footer-distributed .footer-left{
-	width: 40%;
+
+.footer-distributed .footer-left {
+  width: 40%;
 }
- 
-.footer-distributed h3{
-	color:  #ffffff;
-  font-family: 'East Sea Dokdo', cursive !important;
+
+.footer-distributed h3 {
+  color: #ffffff;
+  font-family: "East Sea Dokdo", cursive !important;
   font-size: 50px;
 	margin: 0;
 }
@@ -280,25 +276,20 @@ footer{
     margin: 24px 0 12px 0;
   }
 @media (max-width: 880px) {
- 
-	.footer-distributed{
-		font: bold 14px sans-serif;
-	
-	}
- 
-	.footer-distributed .footer-left,
-	.footer-distributed .footer-center,
-	.footer-distributed .footer-right{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
-	}
- 
-	.footer-distributed .footer-center i{
-		margin-left: 0;
-	}
-	
-	
- 
+  .footer-distributed {
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i {
+    margin-left: 0;
+  }
 }

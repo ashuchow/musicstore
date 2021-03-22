@@ -3,6 +3,18 @@ let User = require("../Models/user.model");
 let Product = require("../Models/product.model");
 
 
+router.route("/user").get((req, res) => {
+  if(!req.user){
+    res.send("Please login first")
+  }
+  if(req.user){
+    res.send(req.user);
+  }
+  
+  //console.log(req.user); // req.user stores the deserealized user that has been authenticated inside it
+});
+
+
 router.route("/update/number").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
@@ -165,7 +177,7 @@ router.route("/movetowishlist").post((req, res) => {
     if (doc) {
       doc.wought.push(req.user._id);
       await doc.save();
-      res.send("New woughter added!");
+      res.send("Product moved to wishlist!");
     }
   });
 });
@@ -215,6 +227,7 @@ router.route("/buyproduct").post((req, res) => {
     if (doc) {
       doc.orders.push(req.body.productId);
       doc.cart.pull(req.body.productId);
+      doc.wishlist.pull(req.body.productId);
       await doc.save();
       res.send("New order made!");
     }
@@ -239,6 +252,7 @@ router.route("/buyallproducts").post((req, res) => {
       for (var i = 0; i < products.length; i++) {
         user.orders.push(products[i]);
         user.cart.pull(products[i]);
+        user.wishlist.pull(products[i]);
 
         Product.findOne({ _id: products[i] }, async (err, doc) => {
           if (err) throw err;

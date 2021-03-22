@@ -107,7 +107,7 @@ class Product extends Component {
                 {product.brand}
                 <br></br>
 
-                Price: ${product.price}
+                Price: Rs. {product.price}
 
                 
     

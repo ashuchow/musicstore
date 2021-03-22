@@ -29,7 +29,7 @@ class Navbar extends Component {
         <Link to="/contact">
           <a>Contact</a>
         </Link>
-        <Link to="/prof">
+        <Link to="/profile">
           <a>Profile</a>
         </Link>
         </nav>
