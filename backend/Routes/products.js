@@ -2,6 +2,7 @@
 const router = require('express').Router();
 let Product = require('../Models/product.model');
 
+
 router.route('/allproducts').get((req, res) => {
   Product.find({}, async (err, doc) =>{
     if (err) throw err;
@@ -11,11 +12,12 @@ router.route('/allproducts').get((req, res) => {
   });
 });
 
+
 router.route('/add').post((req, res) => {
   
     const newProduct = new Product({
         name: req.body.name,
-        description: req.body.description,
+        brand: req.body.brand,
         category: req.body.category,
         imageurl: req.body.imageurl,
         price: req.body.price,
@@ -50,15 +52,6 @@ router.route('/search/:term').get((req, res) => {
   
 });
 
-//PROBABLY NOT NECESSARY
-router.route("/getfeaturedproducts").get((req, res) => {
-  Product.find({featured : "YES"}, async (err, doc) =>{
-    if (err) throw err;
-    if (doc){
-      await res.send(doc);
-    }
-  });
-});
 
 router.route("/searchbydexterity/:dexterity").get((req, res) => {
   const dexterity = req.params.dexterity;
