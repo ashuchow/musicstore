@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import Axios from "axios"; // for making http requests
 import { Link } from 'react-router-dom';
-
+import {Card} from 'react-bootstrap';
+import './Login.css';
 export default function UserSignUp() {
 
 
@@ -42,8 +43,10 @@ export default function UserSignUp() {
             <div className="header">
           <h1>Sign-up</h1>
         </div>
+        <Card  bg="dark" text="light align-items-center">
         <div className = "form">
         <form>
+            <center>
             <ul className = "form-container">
                 <li>
                     <h3>CREATE NEW ACCOUNT</h3>
@@ -73,15 +76,11 @@ export default function UserSignUp() {
                     
                 </li>
                 <li>
-                <label for= "password">Password</label>
+                <label for= "password"><b>Password</b></label>
                 <input type = "password" name ="password" id = "password" onChange={(e) => setRegisterPassword(e.target.value)}>
                     </input>
                 </li>
-                <li>
-                <label for= "rePassword">RePassword</label>
-                <input type = "rePassword" name ="rePassword" id = "rePassword" onChange={(e) => setRegisterPassword(e.target.value)}>
-                    </input>
-                </li>
+
                 <li>
                 <button onClick={register}>Submit</button>
                 </li>
@@ -93,10 +92,11 @@ export default function UserSignUp() {
             </ul>
 
 
-
+            </center>
         </form>
 
     </div>
+    </Card>
     </div>
     </div>
     )

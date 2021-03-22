@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, CardDeck, CardGroup, CardImg, Breadcrumb, Table } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  CardDeck,
+  CardGroup,
+  CardImg,
+  Breadcrumb,
+  Table,
+  Row,
+  Col,
+  Container,
+} from "react-bootstrap";
 
-class ConfTile extends Component {
-  render() {
-    return (
+const ConfTile= ({ products }) => {
+  
+    return products.map((product) => (
       <div>
   <CardGroup>
   <Card border="dark" style={{ width: '18px' }}>
@@ -12,31 +23,23 @@ class ConfTile extends Component {
       <img className="float right" src={this.props.image}alt="" className="img-fluid rounded shadow-sm"></img>
      </div>
     <Card.Body>
-    <Card.Title>{this.props.name}</Card.Title>
+    <Card.Title>{product.name}</Card.Title>
       <Card.Text>
-        {this.props.category}
+        {product.category}
       </Card.Text>
       <Card.Title>Brand:</Card.Title>
       <Card.Text>
-        {this.props.brand}
+        {product.brand}
       </Card.Text>
       <Card.Title>Price:</Card.Title>
       <Card.Text>
-        {this.props.price}
+        {product.price}
       </Card.Text>
       <Card.Title>Status:</Card.Title>
       <Card.Text>
         PURCHASED!
       </Card.Text>
-      <Card.Title>Name:</Card.Title>
-      <Card.Text>
-        {this.props.cname}
-      </Card.Text>
-      <Card.Title>Deliver to:</Card.Title>
-      <Card.Text>
-        {this.props.address}
-      </Card.Text>
-
+     
     </Card.Body>
 
     <Card.Footer>
@@ -50,8 +53,8 @@ class ConfTile extends Component {
        </div>
   
 
-    );
+    ));
   }
-}
+
 
 export default ConfTile;

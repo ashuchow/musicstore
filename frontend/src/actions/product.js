@@ -4,40 +4,32 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Zoom from "react-img-zoom";
+import "../Login.css";
 
-const ProductComp = ({ products }) => {
+const Items = ({ products }) => {
   return (
     <div>
 
-      <div className="products-container">
+      <div className="product-style">
         {products.map((product) => (
-          <li key={product._id}>
-            <div>
+          
+            
 
-              <div className="container">
-                <Link to={"/product/" + product._id}>
-                <Zoom
-                    img={product.imageurl}
-                    className="image"
-                    zoomScale={3}
-                    width={400}
-                    height={450}
-                    alt={product.name}
-                />
-                </Link>
-              </div>
-              <br />
+            <div class="imgcontainer">
+    <img src={product.imageurl} alt="Avatar" class="avatar"/>
+  </div>
+         
+              
+              
 
-              <div className="product-name">
-                <Link to={"/product/" + product._id}>{product.name}</Link>
-              </div>
 
-            </div>
-          </li>
+
+            
+          
         ))}
       </div>
     </div>
   );
 };
 
-export default ProductComp;
+export default Items;

@@ -45,7 +45,7 @@ const CartTile = ({
             <Link to="/payment">
               <Button variant="danger">Buy Now</Button>
             </Link>
-            <Link to="/wishlist">
+            
               <Row>
                 <button
                   className="cart-button"
@@ -66,7 +66,7 @@ const CartTile = ({
                   Buy Now!
                 </button>
               </Row>
-            </Link>
+            
           </div>
         </Card>
       </CardGroup>

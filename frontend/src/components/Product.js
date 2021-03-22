@@ -2,10 +2,11 @@
 
 import React, {Component} from "react";
 import "../App.css";
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import Axios from "axios";
-import ProductComp from "../actions/product";
-import ReviewsComp from "../actions/reviews";
+import Items from "../actions/product";
+import ReviewTile from "../actions/reviews";
+import { ProductConsumer } from "../context";
 
 class Product extends Component {
 
@@ -92,41 +93,49 @@ class Product extends Component {
       return (
 
       <div style={{paddingBottom: "5%"}}>
-        <div className="product-container">
-          <div className="item-a">
-            <Container id="content">
-              <ProductComp products={this.state.products} />
-            </Container>
-          </div>
+        <div className="product-style">
+
 
           <div className="item-b">
             <Container id="content">
             {this.state.products.map((product) =>(
               <li key={product._id}>
-                <div className="product-name" style={{fontSize: "4rem"}}>{product.name}</div><br />
-                <div className="product-price" style={{fontSize: "3rem"}}><p>${product.price} </p></div><br />
-                <div className="product-rating" style={{fontSize: "1.75rem",textAlign: "left"}}><p style={{fontWeight: "600"}}>Product Description:</p>
-                  {product.brand}</div><br />
-                <button onClick={() => addToCart(product._id)}>Add to Cart</button>
-                <button onClick={() => addToWishlist(product._id)}>Save for Later ({product.wishers.length})</button>
+                <div className="itemstyle">
+                <Items products={this.state.products} />
+                {product.name}
+                <br></br>
+                {product.brand}
+                <br></br>
+
+                Price: ${product.price}
+
+                
+    
+     
+   
+                </div>     
+                <button onClick={() => addToCart(product._id)}>Move to Cart</button>
+                <button onClick={() => addToWishlist(product._id)}>Add to Wishlist({product.wought.length})</button>
+                        
               </li> 
             ))}
+            
             </Container>
 
             </div>
           </div>
 
-          <div style={{marginTop: "3%", width: "100%", padding: "0%"}}>
+          <div style={{marginTop: "3%", width: "100%", padding: "0%", color:"white"}}>
             <h1>Product Reviews</h1>
               <center>
-                <ReviewsComp products={this.state.products} />
+                <ReviewTile products={this.state.products} />
               </center>
 
-            <h1 style={{marginTop: "3%"}}>Want to review this product?</h1>
+            <h1 style={{marginTop: "3%", color:"white"}}>Add a review!</h1>
             <form onSubmit={this.handleSubmit}>
-              <label style={{width: "50%"}}>
-                <textarea value={this.state.newreview} onChange={this.handleChange} placeholder="Add your review here!" />
-                <input className="review-btn" type="submit" value="Submit" />
+              <label style={{width: "100%", display:"block"}}>
+                <textarea style={{width:"100%"}} value={this.state.newreview} onChange={this.handleChange} placeholder="Add your review here!" />
+                <button onClick={() => "submit"}>Submit</button>
               </label>
             </form>
 

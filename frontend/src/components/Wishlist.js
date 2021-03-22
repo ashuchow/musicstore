@@ -136,7 +136,7 @@ class Wishlist extends Component {
     return (
       <div>
         <center>
-          <h1 style={{ fontSize: "4rem" }}> WISHLIST </h1>
+          <h1 style={{ fontSize: "4rem", color:"white", fontFamily:"East Sea Dokdo" }}> WISHLIST </h1>
         </center>
 
         <div className="container">
@@ -148,7 +148,7 @@ class Wishlist extends Component {
                                 buyProduct={this.buyProduct}
                                 buyAllProducts={this.buyAllProducts}/>))} */}
             <WishTile
-              products={this.state.products}
+              products={this.state.wishlist}
               moveToCart={this.moveToCart}
               removeFromWishlist={this.removeFromWishlist}
               buyProduct={this.buyProduct}
@@ -157,9 +157,7 @@ class Wishlist extends Component {
           </Container>
         </div>
 
-        <div className="container">
-
-        </div>
+    
       </div>
     );
   }

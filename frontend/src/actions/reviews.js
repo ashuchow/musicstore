@@ -4,16 +4,16 @@
 import React from "react";
 import "../App.css";
 
-const ReviewsComp = ({ products }) => {
+const ReviewTile = ({ products }) => {
   return (
     <div>
-
-      <div className="review-list-container">
+      
+      <div className="review-tile" >
 
         {products.map((product) => (
           <div key={product._id}>
             {product.reviews.length === 0
-            ? <div> There are no reviews for this product yet! </div>
+            ? <div> No reviews! </div>
             :
             product.reviews.map((review) => (
 
@@ -28,4 +28,4 @@ const ReviewsComp = ({ products }) => {
   );
 };
 
-export default ReviewsComp;
+export default ReviewTile;

@@ -73,14 +73,15 @@ class Home extends Component {
       <div>
 
         <center>
-          <div className = "search-bar">
-            <input type = "text" className="search" value = {this.state.searchterm} onChange = {this.editSearchTerm} placeholder = "Search for a product..." />
-            <img className="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" alt="search"/>
+        <h1 style={{fontSize: "3rem", marginTop: "3%", color: "white", fontFamily:"East Sea Dokdo"}}> INSTRUMENTS</h1>
+          <div className = "searchbar">
+            <input type = "text" className="search" value = {this.state.searchterm} onChange = {this.editSearchTerm} placeholder = "Search" />
+            
           </div>
 
-          <h1 style={{fontSize: "3rem", marginTop: "3%"}}> View Products</h1>
+          
 
-          <label>
+          <label style={{color:"white"}}>
           Dexterity: &nbsp;
           <select value={this.state.gender} onChange={this.handleGenderChange}>
             <option value="A">All</option>
@@ -90,7 +91,7 @@ class Home extends Component {
           </select>
           </label>
 
-          <label>
+          <label style={{color:"white"}}>
           Color: &nbsp;
           <select value={this.state.gender} onChange={this.handleColorChange}>
             <option value="A">All</option>
