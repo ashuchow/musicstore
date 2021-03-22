@@ -37,7 +37,7 @@ class Home extends Component {
       method: "GET",
       withCredentials: true,
   
-      url: "http://localhost:5000/products/searchbygender/"+this.state.gender,
+      url: "http://localhost:5000/products/searchbydexterity/"+this.state.gender,
     }).then((res) => {
       this.setState({ products: res.data });
       console.log(res.data);
@@ -81,12 +81,12 @@ class Home extends Component {
           <h1 style={{fontSize: "3rem", marginTop: "3%"}}> View Products</h1>
 
           <label>
-          Gender: &nbsp;
+          Dexterity: &nbsp;
           <select value={this.state.gender} onChange={this.handleGenderChange}>
             <option value="A">All</option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="U">Unisex</option>
+            <option value="Right">Right</option>
+            <option value="Left">Left</option>
+            <option value="Ambi">Ambidexterous</option>
           </select>
           </label>
 
@@ -95,9 +95,9 @@ class Home extends Component {
           <select value={this.state.gender} onChange={this.handleColorChange}>
             <option value="A">All</option>
             <option value="Black">Black</option>
-            <option value="White">White</option>
-            <option value="Orange">Orange</option>
-            <option value="Grey">Grey</option>
+            <option value="Brown">Brown</option>
+            <option value="Silver">Silver</option>
+            <option value="Red">Red</option>
           </select>
           </label>
 

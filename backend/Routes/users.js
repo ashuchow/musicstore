@@ -42,16 +42,17 @@ router.route("/update/address").post((req, res) => {
 });
 
 router.route("/addtocart").post((req, res) => {
-
+  console.log("entered add to cart")
   if (!req.user) {
     res.send("Please login first!");
   } else {
+    console.log(req.user._id)
     Product.findOne({ _id: req.body.productId }, async (err, doc) => {
       if (err) throw err;
       if (doc) {
-        if (doc.wishers.includes(req.user._id)) {
+        if (doc.wought.includes(req.user._id)) {
           await res.send("Product already exists in your wishlist!");
-        } else if (doc.buyers.includes(req.user._id)) {
+        } else if (doc.bought.includes(req.user._id)) {
           res.send("Product already purchased once!");
         } else if (req.user.cart.includes(req.body.productId)) {
           res.send("Product already exists in your cart!");
@@ -86,7 +87,7 @@ router.route("/movetocart").post((req, res) => {
     if (err) throw err;
     if (!doc) res.send("Product does not exist!");
     if (doc) {
-      doc.wishers.pull(req.user._id);
+      doc.wought.pull(req.user._id);
       await doc.save();
       res.send("Product moved to cart!");
     }
@@ -129,9 +130,9 @@ router.route("/addtowishlist").post((req, res) => {
     Product.findOne({ _id: req.body.productId }, async (err, doc) => {
       if (err) throw err;
       if (doc) {
-        if (doc.wishers.includes(req.user._id)) {
+        if (doc.wought.includes(req.user._id)) {
           await res.send("Product already exists in your wishlist!");
-        } else if (doc.buyers.includes(req.user._id)) {
+        } else if (doc.bought.includes(req.user._id)) {
           res.send("Product already purchased once!");
         } else {
           User.findOne({ username: req.user.username }, async (err, doc) => {
@@ -147,7 +148,7 @@ router.route("/addtowishlist").post((req, res) => {
             if (err) throw err;
             if (!doc) res.send("Product does not exist!");
             if (doc) {
-              doc.wishers.push(req.user._id);
+              doc.wought.push(req.user._id);
               await doc.save();
               res.send("New wishlist-er added!");
             }
@@ -173,7 +174,7 @@ router.route("/movetowishlist").post((req, res) => {
     if (err) throw err;
     if (!doc) res.send("Product does not exist!");
     if (doc) {
-      doc.wishers.push(req.user._id);
+      doc.wought.push(req.user._id);
       await doc.save();
       res.send("New wishlist-er added!");
     }
@@ -195,7 +196,7 @@ router.route("/removefromwishlist").post((req, res) => {
     if (err) throw err;
     if (!doc) res.send("Product does not exist!");
     if (doc) {
-      doc.wishers.pull(req.user._id);
+      doc.wought.pull(req.user._id);
       await doc.save();
       res.send("A wishlist-er was removed");
     }
@@ -233,7 +234,7 @@ router.route("/buyproduct").post((req, res) => {
     if (err) throw err;
     if (!doc) res.send("Product does not exist!");
     if (doc) {
-      doc.buyers.push(req.user._id);
+      doc.bought.push(req.user._id);
       await doc.save();
       res.send("New buyer added!");
     }
@@ -254,7 +255,7 @@ router.route("/buyallproducts").post((req, res) => {
           if (err) throw err;
           if (!doc) res.send("Product does not exist!");
           if (doc) {
-            doc.buyers.push(req.user._id);
+            doc.bought.push(req.user._id);
             await doc.save();
             res.send("New buyer added!");
           }

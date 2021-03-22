@@ -1,35 +1,37 @@
+
+const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
-
 const passport = require("passport");
-//const passportLocal = require("passport-local").Strategy;
+const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const expressSession = require("express-session");
 const bodyParser = require("body-parser");
+//const nodemailer = require('nodemailer');
 
 
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
-app.use(express.json());
+const User = require("./Models/user.model");
+//const Product = require("./product");
+//const user = require("./user");
 
-const uri = process.env.ATLAS_URI;
+//========================================= MONGODB CONNECT
 
+mongoose.connect(
+  "mongodb://ashuchow:cEPUkio243AbxbJr@cluster0-shard-00-00.qfido.gcp.mongodb.net:27017,cluster0-shard-00-01.qfido.gcp.mongodb.net:27017,cluster0-shard-00-02.qfido.gcp.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-bzzlt7-shard-0&authSource=admin&retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Users Database (MongoDB) is now connected");
+  }
+);
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
-
+//========================================= MIDDLEWARE
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,31 +43,44 @@ app.use(
 );
 app.use(
   expressSession({
-    secret: "sorkar",
+    secret: "mondal",
     resave: true,
     saveUninitialized: true,
   })
 );
-app.use(cookieParser("sorkar"));
+app.use(cookieParser("mondal"));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
 
-app.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'fshn.customer.service@gmail.com',
+//     pass: 'thisisFSHN123!@#'
+//   }
+// });
 
-app.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "http://localhost:3000/login" }),
-  function (req, res) {
+// const mailOptions = {
+//   from: 'fshn.customer.service@gmail.com',
+//   to: 'soham.de_ug22@ashoka.edu.in',
+//   subject: 'Sending Email using Node.js',
+//   text: 'You added something to cart. That was easy!'
+// };
+
+
+//========================================= ROUTES
+
+app.get('/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+app.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("http://localhost:3000/");
-  }
-);
-
+    res.redirect('http://localhost:3000/profile');
+  });
 
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -81,9 +96,9 @@ app.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-app.get("/logout", function (req, res) {
+app.get('/logout', function(req, res){
   req.logout();
-  res.redirect("/");
+  res.redirect('/');
 });
 
 app.post("/register", (req, res) => {
@@ -100,10 +115,12 @@ app.post("/register", (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("Welcome to Musik Kart!");
+      res.send("Welcome to FSHN!");
     }
   });
 });
+
+// =================== Add new product to DB ROUTE:
 
 
 const productsRouter = require("./Routes/products");
@@ -113,8 +130,12 @@ const usersRouter = require("./Routes/users");
 app.use("/users", usersRouter);
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
+//========================================= SERVER STARTING
 
+app.listen(PORT, () => {
+  console.log(`Server started at http://localhost:${PORT}`);
+});
