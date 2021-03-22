@@ -108,7 +108,7 @@ class Product extends Component {
                 <div className="product-rating" style={{fontSize: "1.75rem",textAlign: "left"}}><p style={{fontWeight: "600"}}>Product Description:</p>
                   {product.brand}</div><br />
                 <button onClick={() => addToCart(product._id)}>Add to Cart</button>
-                <button onClick={() => addToWishlist(product._id)}>Save for Later ({product.wishers.length})</button>
+                <button onClick={() => addToWishlist(product._id)}>Save for Later ({product.wought.length})</button>
               </li> 
             ))}
             </Container>

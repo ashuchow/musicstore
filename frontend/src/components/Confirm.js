@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ConfTile from "../actions/productActions/conftile";
+import ConfTile from "../actions/conftile";
 class Confirm extends Component {
     render() {
         return (

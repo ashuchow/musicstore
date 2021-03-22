@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import CartTile from "../actions/carttile";
-import CartComp from "../actions/cart";
 import WishTile from "../actions/wishtile";
 import Axios from "axios";
 
@@ -148,7 +146,7 @@ class Wishlist extends Component {
                                 buyProduct={this.buyProduct}
                                 buyAllProducts={this.buyAllProducts}/>))} */}
             <WishTile
-              products={this.state.products}
+              products={this.state.wishlist}
               moveToCart={this.moveToCart}
               removeFromWishlist={this.removeFromWishlist}
               buyProduct={this.buyProduct}

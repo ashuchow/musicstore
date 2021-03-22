@@ -39,7 +39,7 @@ function App() {
       <Route path="/product/" component={Product}/>
       <Route path="/payment" component={Details} />
       <Route path="/p" component={Confirm} />
-      <Route path ="/prof" component={profile}/>
+      <Route path ="/profile" component={profile}/>
       <Route component={Default} />
     
 

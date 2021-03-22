@@ -1,46 +1,194 @@
+// This is the Profile Page - users can view their account details and update their information here.
+
 import React, { Component } from "react";
+import "../App.css";
+import { Container, Row, Col } from "react-bootstrap";
+import ProfileItems from "../actions/profileitems";
+import Axios from "axios";
 import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import Userprofile from "../actions/userProfile";
+import Image from "react-bootstrap/Image";
 
+class Profile extends Component {
+  state = {
+    address: "",
+    name: "",
+    mobile: 0,
+    orders: [],
+    cart: [],
+    wishlist: [],
+    modal: false,
+    newmobile: 0,
+    newaddress: "",
+  };
 
-class UserProf extends Component {
+  componentDidMount() {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/users/user",
+    }).then((res) => {
+      if (res.data === "Please login first") {
+        alert(res.data);
+      } else {
+        this.setState({
+          mobile: res.data.mobile,
+          name: res.data.username,
+          address: res.data.address,
+        });
+      }
+    });
+
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/users/getcartitems",
+    }).then((res) => {
+      if (res.data !== "Please log in to proceed!") {
+        this.setState({ cart: res.data });
+      }
+    });
+
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/users/getwishlistitems",
+    }).then((res) => {
+      if (res.data !== "Please log in to proceed!") {
+        this.setState({ wishlist: res.data });
+      }
+    });
+
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/users/getorderitems",
+    }).then((res) => {
+      if (res.data !== "Please log in to proceed!") {
+        this.setState({ orders: res.data });
+      }
+    });
+  }
+
+  logout = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/logout",
+    }).then((res) => {
+      alert("You are logged out!");
+      //console.log(res.data);
+    });
+  };
+
+  updateNum = () => {
+    Axios({
+      method: "POST",
+      data: {
+        mobile: this.state.newmobile,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/users/update/number",
+    }).then((res) => console.log(res));
+  };
+
+  updateAdd = () => {
+    Axios({
+      method: "POST",
+      data: {
+        address: this.state.newaddress,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/users/update/address",
+    }).then((res) => console.log(res));
+  };
+
+  handleNumChange = async (e) => {
+    await this.setState({ newmobile: e.target.value });
+    //console.log(this.state.newmobile)
+  };
+
+  handleAddChange = async (e) => {
+    await this.setState({ newaddress: e.target.value });
+    //console.log(this.state.newaddress)
+  };
+
   render() {
     return (
-       
-     
-
       <div>
-              
-              <header className = "header">
-	<Link to="/">
-		<h1>Musik Mart</h1>
-    </Link>
-	</header>
-        
-        <Userprofile
-        name="Dev"
-        email="devghosh17@gmail.com"
-        phone="9831218674"
-        address="123 Road Road"
-        picture="data:image/jpeg;base64,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"
-  
-        />
-       <Link to = "/wishlist" >        <Button size= 'lg'>
-            See Wishlist
-        </Button>
-        </Link>
-        <Link to = "/cart" >        <Button size= 'lg'>
-            Check cart
-        </Button>
-        </Link>
+        <Container>
+          <Row><Col><h1>
+            <b>Welcome, {this.state.name}</b></h1></Col>
+            <Col><p align="right">
+              <button
+                style={{ maxWidth: "10rem", padding: "0%", marginTop: "2%" }}
+                onClick={this.logout}
+              >
+                {" "}
+                Logout{" "}
+              </button>
+            </p>
+            </Col>
+          
+          </Row>
+          <h2>
+            Your profile information can be seen below.
+            <br />
+            Please make sure that you have the correct contact and shipping
+            details. <br />
+            You may also find your cart, wishlist and previously ordered items
+            under your personal information.
+          </h2>
 
+          <div>
+            <div className="user-info">
+              <h1 style={{ fontSize: "2.5rem" }}>
+                Your current account details:
+              </h1>
+              <br />
+              <h3>
+                <b>Contact Number:</b> {this.state.mobile}
+                <br />
+                <b>Shipping Address:</b> {this.state.address}
+              </h3>
 
+              <h4 style={{ height: "4rem" }}>
+                {" "}{" "}
+                <input type="text" placeholder="Change Contact Number" onChange={this.handleNumChange} />{" "}
+                <button onClick={this.updateNum}> Update </button>{" "}
+              </h4>
+              <h4>
+                {" "}{" "}
+                <input type="text" placeholder="Change Shipping Address" onChange={this.handleAddChange} />{" "}
+                <button onClick={this.updateAdd}> Update </button>{" "}
+              </h4>
+            </div>
+          </div>
+        </Container>
+        <Container>
+          <Row>
+            <Col xs={12} md={8}>
+              <center><h2>Your <Link to="/cart">Cart</Link></h2></center>
+              <div>
+                <ProfileItems products={this.state.cart} />
+              </div>
+            </Col>
+
+            <Col xs={6} md={4}>
+            <center><h2>Your <Link to="/wishlist">Wishlist</Link></h2></center>
+              <div>
+                <Container id="content">
+                  <ProfileItems products={this.state.wishlist} />
+                </Container>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+        <center><h1>Completed Orders</h1></center>
+          <ProfileItems products={this.state.orders} />
+        </Container>
       </div>
-    
     );
   }
 }
-
-export default UserProf;
+export default Profile;
