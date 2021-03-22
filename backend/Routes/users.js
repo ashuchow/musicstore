@@ -138,7 +138,7 @@ router.route("/addtowishlist").post((req, res) => {
             if (doc) {
               doc.wought.push(req.user._id);
               await doc.save();
-              res.send("New wishlist-er added!");
+              res.send("New woughter added!");
             }
           });
         }
@@ -165,7 +165,7 @@ router.route("/movetowishlist").post((req, res) => {
     if (doc) {
       doc.wought.push(req.user._id);
       await doc.save();
-      res.send("New wishlist-er added!");
+      res.send("New woughter added!");
     }
   });
 });
@@ -187,7 +187,7 @@ router.route("/removefromwishlist").post((req, res) => {
     if (doc) {
       doc.wought.pull(req.user._id);
       await doc.save();
-      res.send("A wishlist-er was removed");
+      res.send("Woughter was removed");
     }
   });
 });

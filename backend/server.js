@@ -13,10 +13,6 @@ const app = express();
 const PORT = 5000;
 
 const User = require("./Models/user.model");
-//const Product = require("./Models/product.model");
-//const user = require("./Models/user.model");
-
-//========================================= MONGODB CONNECT
 
 mongoose.connect(
   "mongodb://ashuchow:cEPUkio243AbxbJr@cluster0-shard-00-00.qfido.gcp.mongodb.net:27017,cluster0-shard-00-01.qfido.gcp.mongodb.net:27017,cluster0-shard-00-02.qfido.gcp.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-bzzlt7-shard-0&authSource=admin&retryWrites=true&w=majority",
