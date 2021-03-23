@@ -1,12 +1,9 @@
-// This is the Profile Page - users can view their account details and update their information here.
-
 import React, { Component } from "react";
 import "../App.css";
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileItems from "../actions/profileitems";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import Image from "react-bootstrap/Image";
 
 class Profile extends Component {
   state = {
