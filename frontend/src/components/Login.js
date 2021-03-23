@@ -140,14 +140,10 @@ export default function UserSignIn() {
 
       
         <div>
-                <header className = "header">
-	<Link to="/">
-		<h1>Musik Mart</h1>
-    </Link>
-	</header>
-            <div className="header">
-          <h1>Sign-in</h1>
-        </div>
+        <center>
+          <h1 style={{ fontSize: "4rem", fontFamily:"East Sea Dokdo", color:"white"}}> SIGN IN </h1>
+        </center>
+           
 
         <Card bg="dark" text="light align-items-center">
         
@@ -159,9 +155,7 @@ export default function UserSignIn() {
             <center>
 
             <ul className = "form-container" >
-                <li >
-                    <h3>Sign In</h3>
-                </li> 
+              
                 <li>
                 <div class= "container">
                     <label for = "name">

@@ -57,25 +57,30 @@ import { Button, Card, CardDeck, CardGroup, CardImg, Breadcrumb, Table } from "r
 const ProductTile = ({product}) => {
   return(
     <div>
+
   <CardGroup>
-  <Card border="dark" style={{ width: '18px' }}>
+  <Card border="dark"  bg="lightsalmon" style={{ width: '18px' }}>
   <div className="d-flex flex-column align-items-center text-center">
       <img className="float right" src={product.imageurl}alt="" className="img-fluid rounded shadow-sm"></img>
      </div>
-    <Card.Body>
+     <center>
+    <Card.Body >
     <Card.Title>{product.name}</Card.Title>
       <Card.Text>
-        {product.category}
+
+        CATEGORY:  {product.category}
       </Card.Text>
-      <Card.Title>Brand:</Card.Title>
+      
       <Card.Text>
-        {product.brand}
+
+        BRAND: {product.brand}
       </Card.Text>
-      <Card.Title>Price:</Card.Title>
+      
       <Card.Text>
-        {product.price}
+        PRICE: Rs.{product.price}
       </Card.Text>
     </Card.Body>
+    </center>
     <Card.Footer>
     <Link to={"/product/" + product._id}>
                     <Button variant="danger">

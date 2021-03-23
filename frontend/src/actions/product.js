@@ -15,9 +15,9 @@ const Items = ({ products }) => {
           
             
 
-            <div class="imgcontainer">
-    <img src={product.imageurl} alt="Avatar" class="avatar"/>
-  </div>
+           
+    <img src={product.imageurl} alt="Avatar"/>
+  
          
               
               

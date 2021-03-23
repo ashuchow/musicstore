@@ -81,8 +81,8 @@ class Home extends Component {
 
           
 
-          <label style={{color:"white"}}>
-          Dexterity: &nbsp;
+          <label style={{color:"white", fontFamily:"East Sea Dokdo"}}>
+          DEXTERITY: &nbsp;
           <select value={this.state.gender} onChange={this.handleGenderChange}>
             <option value="A">All</option>
             <option value="Right">Right</option>
@@ -90,9 +90,10 @@ class Home extends Component {
             <option value="Ambi">Ambidexterous</option>
           </select>
           </label>
+          <br></br>
 
-          <label style={{color:"white"}}>
-          Color: &nbsp;
+          <label style={{color:"white", fontFamily:"East Sea Dokdo"}}>
+          COLOR: &nbsp;
           <select value={this.state.gender} onChange={this.handleColorChange}>
             <option value="A">All</option>
             <option value="Black">Black</option>

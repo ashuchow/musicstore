@@ -34,50 +34,58 @@ export default function UserSignUp() {
     };
     return (
         <div>
-                   <header className = "header">
-	<Link to="/">
-		<h1>Musik Mart</h1>
-    </Link>
-	</header>
         <div>
-            <div className="header">
-          <h1>Sign-up</h1>
-        </div>
-        <Card  bg="dark" text="light align-items-center">
-        <div className = "form">
+        <center>
+          <h1 style={{ fontSize: "4rem", fontFamily:"East Sea Dokdo", color:"white"}}> SIGN UP </h1>
+        </center>
+            
         <form>
+        <Card  bg="dark" text="light align-items-center">
+        <div className = "container">
+        
             <center>
             <ul className = "form-container">
                 <li>
                     <h3>CREATE NEW ACCOUNT</h3>
+                    <br></br>
                 </li>
                 <li>
+                    <div class= "container">
                     <label htmlFor= "name">
-                        Name
+                        <b>Name</b>
+                       
+                        
                     </label>
-                    <input type = "name" name ="name" id = "name"onChange={(e) => setRegisterUsername(e.target.value)}>
+                    <br></br>
+                    <input type = "text" placeholder="Username" name ="name" id = "name"onChange={(e) => setRegisterUsername(e.target.value)}>
                     </input>
-                    
+                    </div>
                 </li>
                 <li>
+                <div class= "container">
                     <label htmlFor= "email">
-                        Email
+                        <b>Email</b>
+                        
                     </label>
-                    <input type = "email" name ="email" id = "email"  onChange={(e) => setRegisterEmail(e.target.value)}>
+                    <br></br>
+                    <input type = "text" placeholder="Email" name ="email" id = "email"  onChange={(e) => setRegisterEmail(e.target.value)}>
                     </input>
                     
+                    </div>
                 </li>
                 <li>
                     <label htmlFor= "address">
-                        Address
+                       <b>Address</b> 
                     </label>
-                    <input type = "address" name ="address" id = "address" onChange={(e) => (e.target.value)}>
+                    <br></br>
+                    <input type = "text" placeholder="Address" name ="address" id = "address" onChange={(e) => (e.target.value)}>
                     </input>
+                    
                     
                 </li>
                 <li>
                 <label for= "password"><b>Password</b></label>
-                <input type = "password" name ="password" id = "password" onChange={(e) => setRegisterPassword(e.target.value)}>
+                <input type = "password" placeholder="Password" name ="password" id = "password" onChange={(e) => setRegisterPassword(e.target.value)}>
                     </input>
                 </li>
 
@@ -93,10 +101,12 @@ export default function UserSignUp() {
 
 
             </center>
-        </form>
+        
 
     </div>
+  
     </Card>
+    </form>
     </div>
     </div>
     )

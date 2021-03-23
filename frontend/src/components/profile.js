@@ -116,7 +116,7 @@ class Profile extends Component {
     return (
       <div>
         <Container>
-          <Row><Col><h1>
+          <Row><Col><h1 style={{color:"white"}}>
             <b>Welcome, {this.state.name}</b></h1></Col>
             <Col><p align="right">
               <button
@@ -130,7 +130,7 @@ class Profile extends Component {
             </Col>
           
           </Row>
-          <h2>
+          <h2 style={{color:"white"}}>
             Your profile information can be seen below.
             <br />
             Please make sure that you have the correct contact and shipping
@@ -140,7 +140,7 @@ class Profile extends Component {
           </h2>
 
           <div>
-            <div className="user-info">
+            <div className="userpage">
               <h1 style={{ fontSize: "2.5rem" }}>
                 Your current account details:
               </h1>
@@ -167,14 +167,14 @@ class Profile extends Component {
         <Container>
           <Row>
             <Col xs={12} md={8}>
-              <center><h2>Your <Link to="/cart">Cart</Link></h2></center>
+              <center><h2 style={{color:"white"}}>Your <Link to="/cart">Cart</Link></h2></center>
               <div>
                 <ProfileItems products={this.state.cart} />
               </div>
             </Col>
 
             <Col xs={6} md={4}>
-            <center><h2>Your <Link to="/wishlist">Wishlist</Link></h2></center>
+            <center><h2 style={{color:"white"}}>Your <Link to="/wishlist">Wishlist</Link></h2></center>
               <div>
                 <Container id="content">
                   <ProfileItems products={this.state.wishlist} />
@@ -184,7 +184,7 @@ class Profile extends Component {
           </Row>
         </Container>
         <Container>
-        <center><h1>Completed Orders</h1></center>
+        <center><h1 style={{color:"white"}}>Completed Orders</h1></center>
           <ProfileItems products={this.state.orders} />
         </Container>
       </div>

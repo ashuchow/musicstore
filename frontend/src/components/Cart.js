@@ -163,7 +163,7 @@ class Cart extends Component {
     return (
       <div>
         <center>
-          <h1 style={{ fontSize: "4rem" }}> SHOPPING CART </h1>
+          <h1 style={{ fontSize: "4rem", fontFamily:"East Sea Dokdo", color:"white"}}> SHOPPING CART </h1>
         </center>
 
         <div className="container">
