@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../App.css";
 import {
   Button,
   Card,
@@ -17,7 +18,7 @@ const ProductTile = ({ product }) => {
         <Card border="dark" bg="lightsalmon" style={{ width: "18px" }}>
           <div className="d-flex flex-column align-items-center text-center">
             <img
-              className="float right"
+              className="img"
               src={product.imageurl}
               alt=""
               className="img-fluid rounded shadow-sm"

@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import '../App.css';
+
 
 class Navbar extends Component {
   render() {
     return (
+      
       <div>
+        
         <nav>
+     
           <Link to="/">
             <a>Home</a>
           </Link>
@@ -27,7 +32,9 @@ class Navbar extends Component {
           <Link to="/profile">
             <a>Profile</a>
           </Link>
+          
         </nav>
+        
       </div>
     );
   }

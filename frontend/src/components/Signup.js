@@ -6,22 +6,22 @@ import "./Login.css";
 
 
 export default function UserSignUp() {
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [createAccountUsername, setCreateAccountUsername] = useState("");
+  const [createAccountPassword, setCreateAccountPassword] = useState("");
 
-  const [registerEmail, setRegisterEmail] = useState("");
+  const [createAccountEmail, setCreateAccountEmail] = useState("");
 
-  const register = () => {
+  const createAccount = () => {
     Axios({
       method: "POST",
       data: {
-        username: registerUsername,
-        password: registerPassword,
-        //   mobile: registerMobile,
-        email: registerEmail,
+        username: createAccountUsername,
+        password: createAccountPassword,
+        //   mobile: createAccountMobile,
+        email: createAccountEmail,
       },
       withCredentials: true,
-      url: "http://localhost:5000/register",
+      url: "http://localhost:5000/createaccount",
     }).then(function (res) {
       console.log(res);
       alert(res.data);
@@ -63,7 +63,7 @@ export default function UserSignUp() {
                         placeholder="Username"
                         name="name"
                         id="name"
-                        onChange={(e) => setRegisterUsername(e.target.value)}
+                        onChange={(e) => setCreateAccountUsername(e.target.value)}
                       ></input>
                     </div>
                   </li>
@@ -78,7 +78,7 @@ export default function UserSignUp() {
                         placeholder="Email"
                         name="email"
                         id="email"
-                        onChange={(e) => setRegisterEmail(e.target.value)}
+                        onChange={(e) => setCreateAccountEmail(e.target.value)}
                       ></input>
                     </div>
                   </li>
@@ -104,12 +104,12 @@ export default function UserSignUp() {
                       placeholder="Password"
                       name="password"
                       id="password"
-                      onChange={(e) => setRegisterPassword(e.target.value)}
+                      onChange={(e) => setCreateAccountPassword(e.target.value)}
                     ></input>
                   </li>
 
                   <li>
-                    <button onClick={register}>Submit</button>
+                    <button onClick={createAccount}>Submit</button>
                   </li>
                   <li>
                     Already have an account? <Link to="/login">Sign-IN</Link>

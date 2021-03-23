@@ -1,5 +1,17 @@
 import React from "react";
 import "../App.css";
+import {
+  Button,
+  Card,
+  CardDeck,
+  CardGroup,
+  CardImg,
+  Breadcrumb,
+  Table,
+  Row,
+  Col,
+  Container,
+} from "react-bootstrap";
 
 const ReviewTile = ({ products }) => {
   return (
@@ -11,17 +23,19 @@ const ReviewTile = ({ products }) => {
               <div> No reviews! </div>
             ) : (
               product.reviews.map((review) => (
-                <li key={review._id}>
+               <ul >
+                  <li key={review._id} >
                   {review.verified === "Y" ? (
                     <b>
                       {review.user}{" "}{" "}
-                      says:
+                      :
                     </b>
                   ) : (
-                    <b> {review.user} says:</b>
+                    <b> {review.user}:</b>
                   )}{" "}
                   <p className="review">{review.body}</p>
                 </li>
+                </ul>
               ))
             )}
           </div>

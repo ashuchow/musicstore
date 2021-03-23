@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import { Container, Row, Col } from "react-bootstrap";
-import ProfileItems from "../actions/profileitems";
+import UserItems from "../actions/useritems";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -139,39 +139,45 @@ class Profile extends Component {
             You may also find your cart, wishlist and previously ordered items
             under your personal information.
           </h2>
-
-          <div>
-            <div className="userpage">
-              <h1 style={{ fontSize: "2.5rem" }}>
-                Your current account details:
-              </h1>
-              <br />
-              <h3>
-                <b>Contact Number:</b> {this.state.mobile}
+          <Container>
+            <center>
+              <div className="userpage">
+                <h1 style={{ fontSize: "2.5rem" }}>
+                  Your current account details:
+                </h1>
                 <br />
-                <b>Shipping Address:</b> {this.state.address}
-              </h3>
-
-              <h4 style={{ height: "4rem" }}>
-                {" "}
-                <input
-                  type="text"
-                  placeholder="Change Contact Number"
-                  onChange={this.handleNumChange}
-                />{" "}
-                <button onClick={this.updateNum}> Update </button>{" "}
-              </h4>
-              <h4>
-                {" "}
-                <input
-                  type="text"
-                  placeholder="Change Shipping Address"
-                  onChange={this.handleAddChange}
-                />{" "}
-                <button onClick={this.updateAdd}> Update </button>{" "}
-              </h4>
-            </div>
-          </div>
+                <h3>
+                  <b>Contact Number:</b> {this.state.mobile}
+                  <br />
+                  <b>Shipping Address:</b> {this.state.address}
+                </h3>
+                <Row>
+                  <Col>
+                    <input
+                      type="text"
+                      placeholder="Change Contact Number"
+                      onChange={this.handleNumChange}
+                    />
+                  </Col>
+                  <Col>
+                    <button onClick={this.updateNum}> Update </button>{" "}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <input
+                      type="text"
+                      placeholder="Change Shipping Address"
+                      onChange={this.handleAddChange}
+                    />
+                  </Col>
+                  <Col>
+                    <button onClick={this.updateAdd}> Update </button>
+                  </Col>
+                </Row>
+              </div>
+            </center>
+          </Container>
         </Container>
         <Container>
           <Row>
@@ -182,7 +188,7 @@ class Profile extends Component {
                 </h2>
               </center>
               <div>
-                <ProfileItems products={this.state.cart} />
+                <UserItems products={this.state.cart} />
               </div>
             </Col>
 
@@ -194,7 +200,7 @@ class Profile extends Component {
               </center>
               <div>
                 <Container id="content">
-                  <ProfileItems products={this.state.wishlist} />
+                  <UserItems products={this.state.wishlist} />
                 </Container>
               </div>
             </Col>
@@ -204,7 +210,7 @@ class Profile extends Component {
           <center>
             <h1 style={{ color: "white" }}>Completed Orders</h1>
           </center>
-          <ProfileItems products={this.state.orders} />
+          <UserItems products={this.state.orders} />
         </Container>
       </div>
     );

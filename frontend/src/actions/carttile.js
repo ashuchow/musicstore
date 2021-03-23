@@ -25,6 +25,7 @@ const CartTile = ({
       <CardGroup>
         <Card bg="dark" text="light">
           <div className="d-flex flex-column align-items-center text-center">
+            <br />
             <img
               className="float right"
               src={product.imageurl}
@@ -39,47 +40,40 @@ const CartTile = ({
               <Card.Title>Brand:</Card.Title>
               <Card.Text>{product.brand}</Card.Text>
               <Card.Title>Price:</Card.Title>
-              <Card.Text>{product.price}</Card.Text>
+              <Card.Text>Rs. {product.price}</Card.Text>
             </Card.Body>
-            </div>
-            
-            <Row>
-              <Col>
-                <button
-                  className="cart-button"
-                  onClick={() => moveToWishlist(product._id)}
-                >
-                  Move to Wishlist
-                </button>
+          </div>
+          <center>
+            <div style={{ width: "90%" }}>
+              <Row>
+                <Col>
+                  <button
+                    className="cart-button"
+                    onClick={() => moveToWishlist(product._id)}
+                  >
+                    Move to Wishlist
+                  </button>
                 </Col>
                 <Col>
-                <button
-                  className="cart-button"
-                  onClick={() => removeFromCart(product._id)}
-                >
-                  Remove from Cart
-                </button>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <button
-                  className="cart-button"
-                  onClick={() => buyProduct(product._id)}
-                >
-                  Buy Now!
-                </button>
-              </Col>
-              <Col>
-                <button
-                  className="cart-button"
-                  onClick={() => buyAllProducts(product._id)}
-                >
-                  Buy All Now!
-                </button>
-              </Col>
-            </Row>
-            </Card>
+                  <button
+                    className="cart-button"
+                    onClick={() => removeFromCart(product._id)}
+                  >
+                    Remove from Cart
+                  </button>
+                </Col>
+                <Col>
+                  <button
+                    className="cart-button"
+                    onClick={() => buyProduct(product._id)}
+                  >
+                    Buy Now!
+                  </button>
+                </Col>
+              </Row>
+            </div>
+          </center>
+        </Card>
       </CardGroup>
       <br />
     </div>

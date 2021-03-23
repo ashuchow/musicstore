@@ -5,7 +5,7 @@ let Product = require("../Models/product.model");
 
 router.route("/user").get((req, res) => {
   if(!req.user){
-    res.send("Please login first")
+    res.send("You have not logged in yet, head to sign in")
   }
   if(req.user){
     res.send(req.user);
@@ -18,11 +18,11 @@ router.route("/user").get((req, res) => {
 router.route("/update/number").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.mobile = req.body.mobile;
       await doc.save();
-      res.send("User mobile updated.");
+      res.send("Contact updated!");
     }
   });
 });
@@ -31,11 +31,11 @@ router.route("/update/number").post((req, res) => {
 router.route("/update/address").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.address = req.body.address;
       await doc.save();
-      res.send("User address updated.");
+      res.send("Address updated!");
     }
   });
 });
@@ -43,7 +43,7 @@ router.route("/update/address").post((req, res) => {
 router.route("/addtocart").post((req, res) => {
   //console.log("entered add to cart")
   if (!req.user) {
-    res.send("Please login first!");
+    res.send("You need to login, head to sign in");
   } 
   else {
     //console.log(req.user._id)
@@ -51,19 +51,19 @@ router.route("/addtocart").post((req, res) => {
       if (err) throw err;
       if (doc) {
         if (doc.wought.includes(req.user._id)) {
-          await res.send("Product already exists in your wishlist!");
+          await res.send("This item is already in the wishlist");
         } else if (doc.bought.includes(req.user._id)) {
-          res.send("Product already purchased once!");
+          res.send("This item has already been bought");
         } else if (req.user.cart.includes(req.body.productId)) {
-          res.send("Product already exists in your cart!");
+          res.send("This item is already in your cart");
         } else {
           User.findOne({ username: req.user.username }, async (err, doc) => {
             if (err) throw err;
-            if (!doc) res.send("User does not exist!");
+            if (!doc) res.send("Invalid user");
             if (doc) {
               doc.cart.push(req.body.productId);
               await doc.save();
-              res.send("Product successfully added to cart!");
+              res.send("Instrument added to cart!");
             }
           });
         }
@@ -75,21 +75,21 @@ router.route("/addtocart").post((req, res) => {
 router.route("/movetocart").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.cart.push(req.body.productId);
       doc.wishlist.pull(req.body.productId);
       await doc.save();
-      res.send("Product moved from wishlist to cart");
+      res.send("Item shifted to cart");
     }
   });
   Product.findOne({ _id: req.body.productId }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("Product does not exist!");
+    if (!doc) res.send("Invalid Product");
     if (doc) {
       doc.wought.pull(req.user._id);
       await doc.save();
-      res.send("Product moved to cart!");
+      res.send("Item moved to cart");
     }
   });
 });
@@ -97,11 +97,11 @@ router.route("/movetocart").post((req, res) => {
 router.route("/removefromcart").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.cart.pull(req.body.productId);
       await doc.save();
-      res.send("Product removed from cart.");
+      res.send("Item deleted from cart");
     }
   });
 });
@@ -109,8 +109,8 @@ router.route("/removefromcart").post((req, res) => {
 router.route("/getcartitems").get((req, res) => {
   //const productId = req.params.id;
   if (!req.user) {
-    res.send("Please log in to proceed!");
-    console.log("Please log in to proceed!");
+    res.send("Login to continue");
+    console.log("Login to continue");
   }
   if (req.user) {
     Product.find({ _id: { $in: req.user.cart } }, async (err, doc) => {
@@ -125,19 +125,19 @@ router.route("/getcartitems").get((req, res) => {
 
 router.route("/addtowishlist").post((req, res) => {
   if (!req.user) {
-    res.send("Please login first");
+    res.send("Login before proceeding");
   } else {
     Product.findOne({ _id: req.body.productId }, async (err, doc) => {
       if (err) throw err;
       if (doc) {
         if (doc.wought.includes(req.user._id)) {
-          await res.send("Product already exists in your wishlist!");
+          await res.send("This item has already been added to the wishlist");
         } else if (doc.bought.includes(req.user._id)) {
-          res.send("Product already purchased once!");
+          res.send("This item has already been bought");
         } else {
           User.findOne({ username: req.user.username }, async (err, doc) => {
             if (err) throw err;
-            if (!doc) res.send("User does not exist!");
+            if (!doc) res.send("Invalid user");
             if (doc) {
               doc.wishlist.push(req.body.productId);
               await doc.save();
@@ -146,7 +146,7 @@ router.route("/addtowishlist").post((req, res) => {
           });
           Product.findOne({ _id: req.body.productId }, async (err, doc) => {
             if (err) throw err;
-            if (!doc) res.send("Product does not exist!");
+            if (!doc) res.send("Invalid product");
             if (doc) {
               doc.wought.push(req.user._id);
               await doc.save();
@@ -163,7 +163,7 @@ router.route("/addtowishlist").post((req, res) => {
 router.route("/movetowishlist").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.wishlist.push(req.body.productId);
       doc.cart.pull(req.body.productId);
@@ -173,7 +173,7 @@ router.route("/movetowishlist").post((req, res) => {
   });
   Product.findOne({ _id: req.body.productId }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("Product does not exist!");
+    if (!doc) res.send("Invalid Product");
     if (doc) {
       doc.wought.push(req.user._id);
       await doc.save();
@@ -185,17 +185,17 @@ router.route("/movetowishlist").post((req, res) => {
 router.route("/removefromwishlist").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid User");
     if (doc) {
       doc.wishlist.pull(req.body.productId);
       await doc.save();
-      res.send("Product removed from wishlist.");
+      res.send("Item deleted from wishlist");
     }
   });
 
   Product.findOne({ _id: req.body.productId }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("Product does not exist!");
+    if (!doc) res.send("Invalid Product");
     if (doc) {
       doc.wought.pull(req.user._id);
       await doc.save();
@@ -206,8 +206,8 @@ router.route("/removefromwishlist").post((req, res) => {
 
 router.route("/getwishlistitems").get((req, res) => {
   if (!req.user) {
-    res.send("Please log in to proceed!");
-    console.log("Please log in to proceed!");
+    res.send("Log in to continue");
+    console.log("Log in to continue");
   }
   if (req.user) {
     Product.find({ _id: { $in: req.user.wishlist } }, async (err, doc) => {
@@ -223,22 +223,22 @@ router.route("/getwishlistitems").get((req, res) => {
 router.route("/buyproduct").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("User does not exist!");
+    if (!doc) res.send("Invalid user");
     if (doc) {
       doc.orders.push(req.body.productId);
       doc.cart.pull(req.body.productId);
       doc.wishlist.pull(req.body.productId);
       await doc.save();
-      res.send("New order made!");
+      res.send("Thank you for shopping with MuzikMart");
     }
   });
   Product.findOne({ _id: req.body.productId }, async (err, doc) => {
     if (err) throw err;
-    if (!doc) res.send("Product does not exist!");
+    if (!doc) res.send("Invalid Product");
     if (doc) {
       doc.bought.push(req.user._id);
       await doc.save();
-      res.send("New buyer added!");
+      res.send("Thank you for buying from MuzikMart");
     }
   });
 });
@@ -246,7 +246,7 @@ router.route("/buyproduct").post((req, res) => {
 router.route("/buyallproducts").post((req, res) => {
   User.findOne({ username: req.user.username }, async (err, user) => {
     if (err) throw err;
-    if (!user) res.send("User does not exist!");
+    if (!user) res.send("Invalid user");
     if (user) {
       let products = req.user.cart;
       for (var i = 0; i < products.length; i++) {
@@ -256,17 +256,17 @@ router.route("/buyallproducts").post((req, res) => {
 
         Product.findOne({ _id: products[i] }, async (err, doc) => {
           if (err) throw err;
-          if (!doc) res.send("Product does not exist!");
+          if (!doc) res.send("Invalid product");
           if (doc) {
             doc.bought.push(req.user._id);
             await doc.save();
-            res.send("New buyer added!");
+            res.send("Thank you for buying our product!");
           }
         });
       }
 
       await user.save();
-      res.send("New orders made!");
+      res.send("Products successfully bought!");
     }
   });
 });
@@ -286,11 +286,11 @@ router.route("/getorderitems").get((req, res) => {
 
 router.route("/addreview").post((req, res) => {
   if (!req.user) {
-    res.send("Please login first!");
+    res.send("Login to proceed");
   } else {
     Product.findOne({ _id: req.body.productId }, async (err, doc) => {
       if (err) throw err;
-      if (!doc) res.send("Product does not exist!");
+      if (!doc) res.send("Invalid Product");
       if (!req.user) res.send("Login to continue");
       if (doc && req.user) {
         if (req.user.orders.includes(req.body.productId)) {
@@ -302,7 +302,7 @@ router.route("/addreview").post((req, res) => {
           doc.reviews.push(newreview);
           await doc.save();
           console.log(newreview);
-          res.send("New verified review added!");
+          res.send("Thank you for your review!");
         } else {
           var newreview = {
             body: req.body.review,
@@ -312,7 +312,7 @@ router.route("/addreview").post((req, res) => {
           doc.reviews.push(newreview);
           await doc.save();
           console.log(newreview);
-          res.send("New review added!");
+          res.send("Thank you for your review");
         }
       }
     });

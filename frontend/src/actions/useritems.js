@@ -3,10 +3,10 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
-const ProfileItems = ({ products }) => {
+const UserItems = ({ products }) => {
   return (
     <div>
-      <ul className="profile-list-container">
+      <ul>
         {products.length === 0 ? (
           <div> Nothing to see here :(</div>
         ) : (
@@ -37,4 +37,4 @@ const ProfileItems = ({ products }) => {
   );
 };
 
-export default ProfileItems;
+export default UserItems;

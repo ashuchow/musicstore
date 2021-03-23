@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
@@ -25,7 +24,6 @@ mongoose.connect(
   }
 );
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -44,41 +42,27 @@ app.use(
 app.use(cookieParser("sorkar"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passportConfig")(passport);
+require("./AuthRoutes")(passport);
 
+app.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
-app.get('/google',
-  passport.authenticate('google', { scope: ['profile','email'] }));
+app.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "http://localhost:3000/login",
+  }),
+  function (req, res) {
+    res.redirect("http://localhost:3000/profile");
+  }
+);
 
-app.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
-  function(req, res) {
-    res.redirect('http://localhost:3000/profile');
-  });
-
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("User not found, please sign up!");
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send("Login successful, enjoy Musik Mart!");
-        //console.log(req.user);
-      });
-    }
-  })(req, res, next);
-});
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
-app.post("/register", (req, res) => {
+app.post("/createaccount", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send("You are already a cherished member, please use Log in");
+    if (doc) res.send("Already created this user");
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -94,6 +78,24 @@ app.post("/register", (req, res) => {
   });
 });
 
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("User invalid, go to sign up");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Login successful, enjoy Musik Mart!");
+        //console.log(req.user);
+      });
+    }
+  })(req, res, next);
+});
+
+app.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 const productsRouter = require("./Routes/products");
 app.use("/products", productsRouter);
@@ -101,11 +103,9 @@ app.use("/products", productsRouter);
 const usersRouter = require("./Routes/users");
 app.use("/users", usersRouter);
 
-
 app.get("/", (req, res) => {
-  res.send("Why are you here!");
+  res.send("Go away");
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);

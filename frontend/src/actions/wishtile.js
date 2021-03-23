@@ -18,13 +18,13 @@ const WishTile = ({
   moveToCart,
   removeFromWishlist,
   buyProduct,
-  buyAllProducts,
 }) => {
   return products.map((product) => (
     <div>
       <CardGroup>
         <Card bg="dark" text="light">
           <div className="d-flex flex-column align-items-center text-center">
+            <br />
             <img
               className="float right"
               src={product.imageurl}
@@ -35,42 +35,46 @@ const WishTile = ({
           <div class="col-sm-6">
             <Card.Body>
               <Card.Title>{product.name}</Card.Title>
-              <Card.Text>{product.category}</Card.Text>
+              <Card.Text>Category: {product.category}</Card.Text>
               <Card.Title>Brand:</Card.Title>
               <Card.Text>{product.brand}</Card.Text>
               <Card.Title>Price:</Card.Title>
-              <Card.Text>{product.price}</Card.Text>
+              <Card.Text>Rs. {product.price}</Card.Text>
             </Card.Body>
-
-            <Link to="/wishlist">
-              <Row>
-                <button
-                  className="cart-button"
-                  onClick={() => moveToCart(product._id)}
-                >
-                  Move to Cart
-                </button>
-                <button
-                  className="cart-button"
-                  onClick={() => removeFromWishlist(product._id)}
-                >
-                  Remove from Wishlist
-                </button>
-                <button
-                  className="cart-button"
-                  onClick={() => buyProduct(product._id)}
-                >
-                  Buy Now!
-                </button>
-                <button
-                  className="cart-button"
-                  onClick={() => buyAllProducts(product._id)}
-                >
-                  Buy All Now!
-                </button>
-              </Row>
-            </Link>
-          </div>
+            </div>
+            <center>
+              <div style={{ width: "90%" }}>
+                <Link to="/wishlist">
+                  <Row>
+                    <Col>
+                      <button
+                        className="cart-button"
+                        onClick={() => moveToCart(product._id)}
+                      >
+                        Move to Cart
+                      </button>
+                    </Col>
+                    <Col>
+                      <button
+                        className="cart-button"
+                        onClick={() => removeFromWishlist(product._id)}
+                      >
+                        Remove from Wishlist
+                      </button>
+                    </Col>
+                    <Col>
+                      <button
+                        className="cart-button"
+                        onClick={() => buyProduct(product._id)}
+                      >
+                        Buy Now!
+                      </button>
+                    </Col>
+                  </Row>
+                </Link>
+              </div>
+            </center>
+          
         </Card>
       </CardGroup>
       <br />

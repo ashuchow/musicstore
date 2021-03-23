@@ -1,41 +1,41 @@
 import React, { Component } from "react";
 import "../App.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Axios from "axios";
 import ProductTile from "../actions/producttile";
 
 class Home extends Component {
   state = {
     products: [],
-    searchterm: "",
-    gender: "A",
+    search: "",
+    dexterity: "A",
     color: "A",
   };
 
-  editSearchTerm = async (e) => {
-    await this.setState({ searchterm: e.target.value });
-    console.log(this.state.searchterm);
+  retrieveSearch = async (e) => {
+    await this.setState({ search: e.target.value });
+    console.log(this.state.search);
     //console.log(this.state.products)
     Axios({
       method: "GET",
       withCredentials: true,
 
-      url: "http://localhost:5000/products/search/" + this.state.searchterm,
+      url: "http://localhost:5000/products/search/" + this.state.search,
     }).then((res) => {
       this.setState({ products: res.data });
       console.log(res.data);
     });
   };
 
-  handleGenderChange = async (e) => {
-    await this.setState({ gender: e.target.value });
-    //console.log(this.state.gender)
+  handleDexterityChange = async (e) => {
+    await this.setState({ dexterity: e.target.value });
+    //console.log(this.state.dexterity)
     Axios({
       method: "GET",
       withCredentials: true,
 
       url:
-        "http://localhost:5000/products/searchbydexterity/" + this.state.gender,
+        "http://localhost:5000/products/searchbydexterity/" + this.state.dexterity,
     }).then((res) => {
       this.setState({ products: res.data });
       console.log(res.data);
@@ -85,36 +85,41 @@ class Home extends Component {
             <input
               type="text"
               className="search"
-              value={this.state.searchterm}
-              onChange={this.editSearchTerm}
+              value={this.state.search}
+              onChange={this.retrieveSearch}
               placeholder="Search"
             />
           </div>
-
+          <div style={{width: "30%"}}>
+          <Row>
+            <Col>
           <label style={{ color: "white", fontFamily: "East Sea Dokdo" }}>
             DEXTERITY: &nbsp;
             <select
-              value={this.state.gender}
-              onChange={this.handleGenderChange}
+              value={this.state.dexterity}
+              onChange={this.handleDexterityChange}
             >
-              <option value="A">All</option>
+              <option value="All">All</option>
               <option value="Right">Right</option>
               <option value="Left">Left</option>
               <option value="Ambi">Ambidexterous</option>
             </select>
           </label>
-          <br></br>
-
+          </Col>
+          <Col>
           <label style={{ color: "white", fontFamily: "East Sea Dokdo" }}>
             COLOR: &nbsp;
-            <select value={this.state.gender} onChange={this.handleColorChange}>
-              <option value="A">All</option>
+            <select value={this.state.dexterity} onChange={this.handleColorChange}>
+              <option value="All">All</option>
               <option value="Black">Black</option>
               <option value="Brown">Brown</option>
               <option value="Silver">Silver</option>
               <option value="Red">Red</option>
             </select>
           </label>
+          </Col>
+          </Row>
+          </div>
         </center>
 
         <div className="container" style={{ marginBottom: "5%" }}>

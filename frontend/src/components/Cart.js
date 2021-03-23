@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import CartTile from "../actions/carttile";
 import Axios from "axios";
 
@@ -144,6 +144,31 @@ class Cart extends Component {
             {" "}
             SHOPPING CART{" "}
           </h1>
+        </center>
+        <style type="text/css">
+          {`
+    .btn-flat {
+      background-color: rgb(217, 151, 84);
+      color: rgb(37, 11, 11);
+    }
+
+    .btn-xxl {
+      padding: 1rem 1rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+    `}
+        </style>
+        <center>
+          <div style={{ width: "30%" }} className="ButtonContainer1">
+            <Button
+              variant="flat"
+              size="xxl"
+              onClick={() => this.buyAllProducts()}
+            >
+              Buy All Products
+            </Button>
+          </div>
         </center>
 
         <div className="container">

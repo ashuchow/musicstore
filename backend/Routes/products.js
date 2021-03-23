@@ -1,4 +1,3 @@
-  
 const router = require('express').Router();
 let Product = require('../Models/product.model');
 
@@ -56,7 +55,7 @@ router.route('/search/:term').get((req, res) => {
 router.route("/searchbydexterity/:dexterity").get((req, res) => {
   const dexterity = req.params.dexterity;
 
-  if (dexterity==="A"){
+  if (dexterity==="All"){
     Product.find({}, async (err, doc) =>{
       if (err) throw err;
       if (doc){
@@ -80,7 +79,7 @@ router.route("/searchbycolor/:color").get((req, res) => {
   const color = req.params.color;
 
   
-  if (color==="A"){
+  if (color==="All"){
     Product.find({}, async (err, doc) =>{
       if (err) throw err;
       if (doc){
