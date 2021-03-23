@@ -10,18 +10,6 @@ class Wishlist extends Component {
   };
 
   componentDidMount() {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:5000/users/getcartitems",
-    }).then((res) => {
-      if (res.data === "Please log in to proceed!") {
-        alert("Please log in to proceed!");
-      } else {
-        this.setState({ products: res.data });
-        //console.log(res.data);
-      }
-    });
 
     Axios({
       method: "GET",
@@ -37,39 +25,7 @@ class Wishlist extends Component {
     });
   }
 
-  moveToWishlist(productId) {
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      data: {
-        productId: productId,
-      },
-      url: "http://localhost:5000/users/movetowishlist",
-    }).then((res) => {
-      console.log(res);
-      window.location.reload(false);
-      alert(res.data);
-    });
-    //console.log(productId);
-  }
-
-  removeFromCart(productId) {
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      data: {
-        productId: productId,
-      },
-      url: "http://localhost:5000/users/removefromcart",
-    }).then((res) => {
-      console.log(res);
-      window.location.reload(false);
-      alert(res.data);
-    });
-    //console.log(productId);
-  }
-
-  removeFromWishlist(productId) {
+  deleteWish(productId) {
     Axios({
       method: "POST",
       withCredentials: true,
@@ -101,7 +57,7 @@ class Wishlist extends Component {
     //console.log(productId);
   }
 
-  buyProduct(productId) {
+  buy(productId) {
     Axios({
       method: "POST",
       withCredentials: true,
@@ -109,19 +65,6 @@ class Wishlist extends Component {
         productId: productId,
       },
       url: "http://localhost:5000/users/buyproduct",
-    }).then((res) => {
-      console.log(res.data);
-      window.location.reload(false);
-      alert(res.data);
-    });
-    //console.log(productId);
-  }
-
-  buyAllProducts() {
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      url: "http://localhost:5000/users/buyallproducts",
     }).then((res) => {
       console.log(res.data);
       window.location.reload(false);
@@ -151,9 +94,8 @@ class Wishlist extends Component {
             <WishTile
               products={this.state.wishlist}
               moveToCart={this.moveToCart}
-              removeFromWishlist={this.removeFromWishlist}
-              buyProduct={this.buyProduct}
-              buyAllProducts={this.buyAllProducts}
+              deleteWish={this.deleteWish}
+              buy={this.buy}
             />
           </Container>
         </div>

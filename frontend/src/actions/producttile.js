@@ -21,7 +21,6 @@ const ProductTile = ({ product }) => {
               className="img"
               src={product.imageurl}
               alt=""
-              className="img-fluid rounded shadow-sm"
             ></img>
           </div>
           <center>

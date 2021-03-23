@@ -229,7 +229,7 @@ router.route("/buyproduct").post((req, res) => {
       doc.cart.pull(req.body.productId);
       doc.wishlist.pull(req.body.productId);
       await doc.save();
-      res.send("Thank you for shopping with MuzikMart");
+      res.send("Thank you for shopping with MusikMart");
     }
   });
   Product.findOne({ _id: req.body.productId }, async (err, doc) => {
@@ -238,7 +238,7 @@ router.route("/buyproduct").post((req, res) => {
     if (doc) {
       doc.bought.push(req.user._id);
       await doc.save();
-      res.send("Thank you for buying from MuzikMart");
+      res.send("Thank you for buying from MusikMart");
     }
   });
 });

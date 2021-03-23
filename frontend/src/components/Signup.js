@@ -17,7 +17,6 @@ export default function UserSignUp() {
       data: {
         username: createAccountUsername,
         password: createAccountPassword,
-        //   mobile: createAccountMobile,
         email: createAccountEmail,
       },
       withCredentials: true,
@@ -81,19 +80,6 @@ export default function UserSignUp() {
                         onChange={(e) => setCreateAccountEmail(e.target.value)}
                       ></input>
                     </div>
-                  </li>
-                  <li>
-                    <label htmlFor="address">
-                      <b>Address</b>
-                    </label>
-                    <br></br>
-                    <input
-                      type="text"
-                      placeholder="Address"
-                      name="address"
-                      id="address"
-                      onChange={(e) => e.target.value}
-                    ></input>
                   </li>
                   <li>
                     <label for="password">

@@ -16,9 +16,8 @@ import {
 const CartTile = ({
   products,
   moveToWishlist,
-  removeFromCart,
-  buyProduct,
-  buyAllProducts,
+  deleteCartItem,
+  buy,
 }) => {
   return products.map((product) => (
     <div>
@@ -30,7 +29,6 @@ const CartTile = ({
               className="float right"
               src={product.imageurl}
               alt=""
-              className="img-fluid rounded shadow-sm"
             ></img>
           </div>
           <div class="col-sm-6">
@@ -57,7 +55,7 @@ const CartTile = ({
                 <Col>
                   <button
                     className="cart-button"
-                    onClick={() => removeFromCart(product._id)}
+                    onClick={() => deleteCartItem(product._id)}
                   >
                     Remove from Cart
                   </button>
@@ -65,7 +63,7 @@ const CartTile = ({
                 <Col>
                   <button
                     className="cart-button"
-                    onClick={() => buyProduct(product._id)}
+                    onClick={() => buy(product._id)}
                   >
                     Buy Now!
                   </button>

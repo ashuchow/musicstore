@@ -23,18 +23,6 @@ class Cart extends Component {
       }
     });
 
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:5000/users/getwishlistitems",
-    }).then((res) => {
-      if (res.data === "Please log in to proceed!") {
-        console.log("Please log in to proceed!");
-      } else {
-        this.setState({ wishlist: res.data });
-        //console.log(res.data);
-      }
-    });
   }
 
   moveToWishlist(productId) {
@@ -53,7 +41,7 @@ class Cart extends Component {
     //console.log(productId);
   }
 
-  removeFromCart(productId) {
+  deleteCartItem(productId) {
     Axios({
       method: "POST",
       withCredentials: true,
@@ -69,39 +57,7 @@ class Cart extends Component {
     //console.log(productId);
   }
 
-  removeFromWishlist(productId) {
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      data: {
-        productId: productId,
-      },
-      url: "http://localhost:5000/users/removefromwishlist",
-    }).then((res) => {
-      console.log(res);
-      window.location.reload(false);
-      alert(res.data);
-    });
-    //console.log(productId);
-  }
-
-  moveToCart(productId) {
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      data: {
-        productId: productId,
-      },
-      url: "http://localhost:5000/users/movetocart",
-    }).then((res) => {
-      console.log(res);
-      window.location.reload(false);
-      alert(res.data);
-    });
-    //console.log(productId);
-  }
-
-  buyProduct(productId) {
+  buy(productId) {
     Axios({
       method: "POST",
       withCredentials: true,
@@ -176,9 +132,8 @@ class Cart extends Component {
             <CartTile
               products={this.state.products}
               moveToWishlist={this.moveToWishlist}
-              removeFromCart={this.removeFromCart}
-              buyProduct={this.buyProduct}
-              buyAllProducts={this.buyAllProducts}
+              deleteCartItem={this.deleteCartItem}
+              buy={this.buy}
             />
           </Container>
         </div>

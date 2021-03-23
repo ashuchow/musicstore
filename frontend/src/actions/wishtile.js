@@ -16,8 +16,8 @@ import {
 const WishTile = ({
   products,
   moveToCart,
-  removeFromWishlist,
-  buyProduct,
+  deleteWish,
+  buy,
 }) => {
   return products.map((product) => (
     <div>
@@ -57,7 +57,7 @@ const WishTile = ({
                     <Col>
                       <button
                         className="cart-button"
-                        onClick={() => removeFromWishlist(product._id)}
+                        onClick={() => deleteWish(product._id)}
                       >
                         Remove from Wishlist
                       </button>
@@ -65,7 +65,7 @@ const WishTile = ({
                     <Col>
                       <button
                         className="cart-button"
-                        onClick={() => buyProduct(product._id)}
+                        onClick={() => buy(product._id)}
                       >
                         Buy Now!
                       </button>
