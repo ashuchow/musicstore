@@ -134,17 +134,20 @@ class Wishlist extends Component {
     return (
       <div>
         <center>
-          <h1 style={{ fontSize: "4rem", color:"white", fontFamily:"East Sea Dokdo" }}> WISHLIST </h1>
+          <h1
+            style={{
+              fontSize: "4rem",
+              color: "white",
+              fontFamily: "East Sea Dokdo",
+            }}
+          >
+            {" "}
+            WISHLIST{" "}
+          </h1>
         </center>
 
         <div className="container">
           <Container id="content">
-
-            {/* {this.state.products.map((product) => (<CartTile product = {product}
-                                moveToWishlist={this.moveToWishlist}
-                                removeFromCart={this.removeFromCart}
-                                buyProduct={this.buyProduct}
-                                buyAllProducts={this.buyAllProducts}/>))} */}
             <WishTile
               products={this.state.wishlist}
               moveToCart={this.moveToCart}
@@ -154,8 +157,6 @@ class Wishlist extends Component {
             />
           </Container>
         </div>
-
-    
       </div>
     );
   }

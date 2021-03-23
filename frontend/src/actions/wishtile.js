@@ -42,9 +42,6 @@ const WishTile = ({
               <Card.Text>{product.price}</Card.Text>
             </Card.Body>
 
-            <Link to="/payment">
-              <Button variant="danger">Buy Now</Button>
-            </Link>
             <Link to="/wishlist">
               <Row>
                 <button

@@ -9,23 +9,9 @@ import "../Login.css";
 const Items = ({ products }) => {
   return (
     <div>
-
       <div className="product-style">
         {products.map((product) => (
-          
-            
-
-           
-    <img src={product.imageurl} alt="Avatar"/>
-  
-         
-              
-              
-
-
-
-            
-          
+          <img src={product.imageurl} alt="Avatar" />
         ))}
       </div>
     </div>

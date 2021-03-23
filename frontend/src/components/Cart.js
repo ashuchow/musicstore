@@ -1,32 +1,3 @@
-// import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-// import { Table } from "react-bootstrap";
-// import { Button } from "react-bootstrap";
-// import CartTile from "../actions/carttile";
-
-// class Cart extends Component {
-//   render() {
-//     return (
-//       <div>
-//             <header className = "header">
-// 	<Link to="/">
-// 		<h1>Musik Mart</h1>
-//     </Link>
-// 	</header>
-
-//             <div className="header">
-//           <h1>Cart</h1>
-//         </div>
-//         <div>
-
-//         </div>
-
-//       </div>
-//     );
-//   }
-// }
-
-// export default Cart;
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import CartTile from "../actions/carttile";
@@ -163,17 +134,20 @@ class Cart extends Component {
     return (
       <div>
         <center>
-          <h1 style={{ fontSize: "4rem", fontFamily:"East Sea Dokdo", color:"white"}}> SHOPPING CART </h1>
+          <h1
+            style={{
+              fontSize: "4rem",
+              fontFamily: "East Sea Dokdo",
+              color: "white",
+            }}
+          >
+            {" "}
+            SHOPPING CART{" "}
+          </h1>
         </center>
 
         <div className="container">
           <Container id="content">
-
-            {/* {this.state.products.map((product) => (<CartTile product = {product}
-                                moveToWishlist={this.moveToWishlist}
-                                removeFromCart={this.removeFromCart}
-                                buyProduct={this.buyProduct}
-                                buyAllProducts={this.buyAllProducts}/>))} */}
             <CartTile
               products={this.state.products}
               moveToWishlist={this.moveToWishlist}
@@ -183,7 +157,6 @@ class Cart extends Component {
             />
           </Container>
         </div>
-
       </div>
     );
   }

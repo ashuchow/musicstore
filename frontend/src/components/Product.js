@@ -6,7 +6,6 @@ import { Container, Card } from "react-bootstrap";
 import Axios from "axios";
 import Items from "../actions/product";
 import ReviewTile from "../actions/reviews";
-import { ProductConsumer } from "../context";
 
 class Product extends Component {
 

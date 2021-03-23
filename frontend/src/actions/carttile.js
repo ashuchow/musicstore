@@ -41,34 +41,45 @@ const CartTile = ({
               <Card.Title>Price:</Card.Title>
               <Card.Text>{product.price}</Card.Text>
             </Card.Body>
-
-            <Link to="/payment">
-              <Button variant="danger">Buy Now</Button>
-            </Link>
+            </div>
             
-              <Row>
+            <Row>
+              <Col>
                 <button
                   className="cart-button"
                   onClick={() => moveToWishlist(product._id)}
                 >
                   Move to Wishlist
                 </button>
+                </Col>
+                <Col>
                 <button
                   className="cart-button"
                   onClick={() => removeFromCart(product._id)}
                 >
                   Remove from Cart
                 </button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
                 <button
                   className="cart-button"
                   onClick={() => buyProduct(product._id)}
                 >
                   Buy Now!
                 </button>
-              </Row>
-            
-          </div>
-        </Card>
+              </Col>
+              <Col>
+                <button
+                  className="cart-button"
+                  onClick={() => buyAllProducts(product._id)}
+                >
+                  Buy All Now!
+                </button>
+              </Col>
+            </Row>
+            </Card>
       </CardGroup>
       <br />
     </div>

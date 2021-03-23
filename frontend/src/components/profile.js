@@ -116,21 +116,25 @@ class Profile extends Component {
     return (
       <div>
         <Container>
-          <Row><Col><h1 style={{color:"white"}}>
-            <b>Welcome, {this.state.name}</b></h1></Col>
-            <Col><p align="right">
-              <button
-                style={{ maxWidth: "10rem", padding: "0%", marginTop: "2%" }}
-                onClick={this.logout}
-              >
-                {" "}
-                Logout{" "}
-              </button>
-            </p>
+          <Row>
+            <Col>
+              <h1 style={{ color: "white" }}>
+                <b>Welcome, {this.state.name}</b>
+              </h1>
             </Col>
-          
+            <Col>
+              <p align="right">
+                <button
+                  style={{ maxWidth: "10rem", padding: "0%", marginTop: "2%" }}
+                  onClick={this.logout}
+                >
+                  {" "}
+                  Logout{" "}
+                </button>
+              </p>
+            </Col>
           </Row>
-          <h2 style={{color:"white"}}>
+          <h2 style={{ color: "white" }}>
             Your profile information can be seen below.
             <br />
             Please make sure that you have the correct contact and shipping
@@ -152,13 +156,21 @@ class Profile extends Component {
               </h3>
 
               <h4 style={{ height: "4rem" }}>
-                {" "}{" "}
-                <input type="text" placeholder="Change Contact Number" onChange={this.handleNumChange} />{" "}
+                {" "}
+                <input
+                  type="text"
+                  placeholder="Change Contact Number"
+                  onChange={this.handleNumChange}
+                />{" "}
                 <button onClick={this.updateNum}> Update </button>{" "}
               </h4>
               <h4>
-                {" "}{" "}
-                <input type="text" placeholder="Change Shipping Address" onChange={this.handleAddChange} />{" "}
+                {" "}
+                <input
+                  type="text"
+                  placeholder="Change Shipping Address"
+                  onChange={this.handleAddChange}
+                />{" "}
                 <button onClick={this.updateAdd}> Update </button>{" "}
               </h4>
             </div>
@@ -167,14 +179,22 @@ class Profile extends Component {
         <Container>
           <Row>
             <Col xs={12} md={8}>
-              <center><h2 style={{color:"white"}}>Your <Link to="/cart">Cart</Link></h2></center>
+              <center>
+                <h2 style={{ color: "white" }}>
+                  Your <Link to="/cart">Cart</Link>
+                </h2>
+              </center>
               <div>
                 <ProfileItems products={this.state.cart} />
               </div>
             </Col>
 
             <Col xs={6} md={4}>
-            <center><h2 style={{color:"white"}}>Your <Link to="/wishlist">Wishlist</Link></h2></center>
+              <center>
+                <h2 style={{ color: "white" }}>
+                  Your <Link to="/wishlist">Wishlist</Link>
+                </h2>
+              </center>
               <div>
                 <Container id="content">
                   <ProfileItems products={this.state.wishlist} />
@@ -184,7 +204,9 @@ class Profile extends Component {
           </Row>
         </Container>
         <Container>
-        <center><h1 style={{color:"white"}}>Completed Orders</h1></center>
+          <center>
+            <h1 style={{ color: "white" }}>Completed Orders</h1>
+          </center>
           <ProfileItems products={this.state.orders} />
         </Container>
       </div>
